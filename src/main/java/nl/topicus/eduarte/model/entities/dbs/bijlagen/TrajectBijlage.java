@@ -15,16 +15,15 @@
  */
 package nl.topicus.eduarte.model.entities.dbs.bijlagen;
 
-import javax.persistence.Basic;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.hibernate.annotations.ForeignKey;
 
+import jakarta.persistence.Basic;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.ForeignKey;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import nl.topicus.eduarte.model.entities.bijlage.IBijlageKoppelEntiteit;
 import nl.topicus.eduarte.model.entities.dbs.trajecten.Traject;
 import nl.topicus.eduarte.model.entities.personen.DeelnemerBijlage;
@@ -35,8 +34,7 @@ public class TrajectBijlage extends DeelnemerBijlage
 {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@Basic(optional = false)
-	@JoinColumn(nullable = true, name = "traject")
-	@ForeignKey(name = "FK_TestBijlage_traject")
+	@JoinColumn(nullable = true, name = "traject", foreignKey = @ForeignKey(name = "FK_TestBijlage_traject"))
 	private Traject traject;
 
 	public TrajectBijlage()

@@ -18,11 +18,9 @@ package nl.topicus.eduarte.model.entities.taxonomie.ho;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.OneToMany;
-import javax.persistence.OrderBy;
-
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.OneToMany;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -32,7 +30,7 @@ import nl.topicus.eduarte.model.entities.taxonomie.Verbintenisgebied;
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "Landelijk")
 public class CrohoOpleiding extends Verbintenisgebied {
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "crohoOpleiding")
-	@OrderBy(value = "brin")
+	// @OrderBy(value = "brin")
 	@Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "Instelling")
 	private List<CrohoOpleidingAanbod> aanbod = new ArrayList<>();
 

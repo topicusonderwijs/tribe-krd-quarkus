@@ -15,9 +15,9 @@
  */
 package nl.topicus.eduarte.model.entities.participatie;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
+import jakarta.persistence.Basic;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
 
 import nl.topicus.eduarte.model.entities.participatie.enums.ExterneAgendaConnection;
 
@@ -82,13 +82,11 @@ public class GoogleCalendarKoppeling extends ExterneAgendaKoppeling {
 
 	@Override
 	public ExterneAgendaConnection connect(ExterneAgenda agenda) throws ExterneAgendaException {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public String getBeschrijving() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 }

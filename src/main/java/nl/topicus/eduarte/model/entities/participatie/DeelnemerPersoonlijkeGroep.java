@@ -17,18 +17,18 @@ package nl.topicus.eduarte.model.entities.participatie;
 
 import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.Immutable;
-import org.hibernate.annotations.Table;
+import jakarta.persistence.Table;
 
 import nl.topicus.eduarte.model.entities.ViewEntiteit;
 import nl.topicus.eduarte.model.entities.personen.Deelnemer;
@@ -43,7 +43,7 @@ import nl.topicus.eduarte.model.entities.personen.Deelnemer;
 @Entity
 @Immutable
 @Cache(usage = CacheConcurrencyStrategy.READ_ONLY, region = "Instelling")
-@Table(appliesTo = "DeelnemerPersoonlijkeGroep")
+@Table(name = "DeelnemerPersoonlijkeGroep")
 public class DeelnemerPersoonlijkeGroep extends ViewEntiteit {
 	/**
 	 * De parent van de relatie. Dit is de groep waarin de deelnemers zitten.

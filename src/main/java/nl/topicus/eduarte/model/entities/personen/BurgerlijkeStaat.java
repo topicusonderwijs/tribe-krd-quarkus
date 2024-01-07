@@ -15,9 +15,9 @@
  */
 package nl.topicus.eduarte.model.entities.personen;
 
-import javax.xml.bind.annotation.XmlEnum;
-import javax.xml.bind.annotation.XmlEnumValue;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlEnum;
+import jakarta.xml.bind.annotation.XmlEnumValue;
+import jakarta.xml.bind.annotation.XmlType;
 
 @XmlType(name = "Burgelijkestaat")
 @XmlEnum(String.class)
@@ -98,32 +98,26 @@ public enum BurgerlijkeStaat {
 	};
 
 	public boolean isGehuwd() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	public boolean isGeregistreerdPartnerschap() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	public boolean isGescheiden() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	public boolean isOngehuwd() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	public boolean isOntbondenGeregistreerdPartnerschap() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	public boolean isWeduweOfWeduwnaar() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 }

@@ -15,18 +15,17 @@
  */
 package nl.topicus.eduarte.model.entities.dbs.trajecten.templates;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.hibernate.annotations.ForeignKey;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.ForeignKey;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import nl.topicus.eduarte.model.entities.organisatie.InstellingEntiteit;
 import nl.topicus.eduarte.model.entities.personen.Medewerker;
 import nl.topicus.eduarte.model.entities.security.authorization.Rol;
@@ -35,10 +34,8 @@ import nl.topicus.eduarte.model.entities.security.authorization.Rol;
  */
 @Entity()
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "Instelling")
-public class GekoppeldeTemplate extends InstellingEntiteit
-{
-	public enum KoppelingsRol
-	{
+public class GekoppeldeTemplate extends InstellingEntiteit {
+	public enum KoppelingsRol {
 		UITVOERENDE,
 		VERANTWOORDELIJKE
 	}
@@ -52,18 +49,15 @@ public class GekoppeldeTemplate extends InstellingEntiteit
 	private UitvoerendeType type;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "medewerker", nullable = true)
-	@ForeignKey(name = "FK_UitvoerTempl_medewerker")
+	@JoinColumn(name = "medewerker", nullable = true, foreignKey = @ForeignKey(name = "FK_UitvoerTempl_medewerker"))
 	private Medewerker medewerker;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "rol", nullable = true)
-	@ForeignKey(name = "FK_UitvoerTempl_rol")
+	@JoinColumn(name = "rol", nullable = true, foreignKey = @ForeignKey(name = "FK_UitvoerTempl_rol"))
 	private Rol rol;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "trajectTemplate", nullable = false)
-	@ForeignKey(name = "FK_UitvoerTempl_templ")
+	@JoinColumn(name = "trajectTemplate", nullable = false, foreignKey = @ForeignKey(name = "FK_UitvoerTempl_templ"))
 	private TrajectTemplate trajectTemplate;
 
 	public KoppelingsRol getKoppelingsRol() {

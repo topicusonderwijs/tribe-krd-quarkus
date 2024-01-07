@@ -15,15 +15,14 @@
  */
 package nl.topicus.eduarte.model.entities.dbs.trajecten;
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.hibernate.annotations.ForeignKey;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.ForeignKey;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import nl.topicus.eduarte.model.entities.organisatie.InstellingEntiteit;
 
 @Entity()
@@ -31,13 +30,11 @@ import nl.topicus.eduarte.model.entities.organisatie.InstellingEntiteit;
 public class VervolgHandeling extends InstellingEntiteit {
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "vervolg", nullable = false)
-	@ForeignKey(name = "FK_VervHand_vervolg")
+	@JoinColumn(name = "vervolg", nullable = false, foreignKey = @ForeignKey(name = "FK_VervHand_vervolg"))
 	private BegeleidingsHandeling vervolg;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "voorafgaand", nullable = false)
-	@ForeignKey(name = "FK_VervHand_vooraf")
+	@JoinColumn(name = "voorafgaand", nullable = false, foreignKey = @ForeignKey(name = "FK_VervHand_vooraf"))
 	private BegeleidingsHandeling voorafgaand;
 
 	public VervolgHandeling() {

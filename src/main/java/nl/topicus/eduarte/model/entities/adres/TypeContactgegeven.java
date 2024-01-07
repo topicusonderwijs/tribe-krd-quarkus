@@ -15,8 +15,8 @@
  */
 package nl.topicus.eduarte.model.entities.adres;
 
-import javax.xml.bind.annotation.XmlEnum;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlEnum;
+import jakarta.xml.bind.annotation.XmlType;
 
 /**
  * Een onderwijsinstelling kan zelf allerlei soorten contactgegevens vastleggen, zoals

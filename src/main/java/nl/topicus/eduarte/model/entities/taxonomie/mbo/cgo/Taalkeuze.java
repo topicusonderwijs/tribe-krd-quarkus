@@ -15,13 +15,13 @@
  */
 package nl.topicus.eduarte.model.entities.taxonomie.mbo.cgo;
 
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.hibernate.annotations.Table;
+import jakarta.persistence.Table;
 
 import nl.topicus.eduarte.model.entities.inschrijving.Verbintenis;
 import nl.topicus.eduarte.model.entities.organisatie.InstellingEntiteit;
@@ -29,7 +29,7 @@ import nl.topicus.eduarte.model.entities.organisatie.InstellingEntiteit;
 /**
  */
 @Entity
-@Table(appliesTo = "Taalkeuze")
+@Table(name = "Taalkeuze")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "Instelling")
 public class Taalkeuze extends InstellingEntiteit {
 	@ManyToOne(optional = false)

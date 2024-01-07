@@ -15,17 +15,17 @@
  */
 package nl.topicus.eduarte.model.entities.taxonomie.mbo.cgo;
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
-import org.hibernate.annotations.Table;
+import jakarta.persistence.Table;
 
 import nl.topicus.eduarte.model.entities.organisatie.InstellingEntiteit;
 
 @Entity
-@Table(appliesTo = "RapportageTemplateIJkpunt")
+@Table(name = "RapportageTemplateIJkpunt")
 public class RapportageTemplateIJkpunt extends InstellingEntiteit {
 	@ManyToOne(optional = false, fetch = FetchType.LAZY)
 	@JoinColumn(name = "ijkpunt", nullable = false)

@@ -15,21 +15,21 @@
  */
 package nl.topicus.eduarte.model.entities.taxonomie.mbo.cgo;
 
-import javax.persistence.Basic;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import jakarta.persistence.Basic;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.hibernate.annotations.Table;
+import jakarta.persistence.Table;
 
 import nl.topicus.eduarte.model.entities.organisatie.InstellingEntiteit;
 import nl.topicus.eduarte.model.entities.personen.Deelnemer;
 
 @Entity
-@Table(appliesTo = "DeelnemerMatrix")
+@Table(name = "DeelnemerMatrix")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "Instelling")
 public class DeelnemerMatrix extends InstellingEntiteit {
 	@ManyToOne(optional = false, fetch = FetchType.EAGER)

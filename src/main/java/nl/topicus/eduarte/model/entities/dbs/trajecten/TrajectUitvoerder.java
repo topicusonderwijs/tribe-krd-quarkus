@@ -15,30 +15,26 @@
  */
 package nl.topicus.eduarte.model.entities.dbs.trajecten;
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.hibernate.annotations.ForeignKey;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.ForeignKey;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import nl.topicus.eduarte.model.entities.organisatie.InstellingEntiteit;
 import nl.topicus.eduarte.model.entities.personen.Medewerker;
 
 @Entity()
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "Instelling")
-public class TrajectUitvoerder extends InstellingEntiteit
-{
+public class TrajectUitvoerder extends InstellingEntiteit {
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "Medewerker", nullable = false)
-	@ForeignKey(name = "FK_TrajUitv_Medew")
+	@JoinColumn(name = "Medewerker", nullable = false, foreignKey = @ForeignKey(name = "FK_TrajUitv_Medew"))
 	private Medewerker medewerker;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "Traject", nullable = false)
-	@ForeignKey(name = "FK_TrajUitv_Traj")
+	@JoinColumn(name = "Traject", nullable = false, foreignKey = @ForeignKey(name = "FK_TrajUitv_Traj"))
 	private Traject traject;
 
 	public Medewerker getMedewerker() {

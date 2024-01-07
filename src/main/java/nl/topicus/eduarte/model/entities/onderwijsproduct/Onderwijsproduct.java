@@ -19,16 +19,16 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.Lob;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.UniqueConstraint;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Lob;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.UniqueConstraint;
 
 import org.hibernate.annotations.BatchSize;
 import org.hibernate.annotations.Cache;
@@ -53,7 +53,7 @@ import nl.topicus.eduarte.model.entities.vrijevelden.VrijVeldCategorie;
  */
 @Entity()
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "Inrichting")
-@javax.persistence.Table(uniqueConstraints = { @UniqueConstraint(columnNames = { "code", "organisatie" }) })
+@jakarta.persistence.Table(uniqueConstraints = { @UniqueConstraint(columnNames = { "code", "organisatie" }) })
 public class Onderwijsproduct extends BeginEinddatumInstellingEntiteit
 implements IOrganisatieEenheidLocatieKoppelbaarEntiteit<OnderwijsproductAanbod>,
 VrijVeldable<OnderwijsproductVrijVeld>, IBijlageKoppelEntiteit<OnderwijsproductBijlage> {
@@ -831,37 +831,31 @@ VrijVeldable<OnderwijsproductVrijVeld>, IBijlageKoppelEntiteit<OnderwijsproductB
 
 	@Override
 	public boolean bestaatBijlage(Bijlage bijlage) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public OnderwijsproductBijlage addBijlage(Bijlage bijlage) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public OnderwijsproductVrijVeld newVrijVeld() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public List<OnderwijsproductVrijVeld> getVrijVelden(VrijVeldCategorie categorie) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public String getVrijVeldWaarde(String naam) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public List<OnderwijsproductAanbod> getOrganisatieEenheidLocatieKoppelingen() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 }

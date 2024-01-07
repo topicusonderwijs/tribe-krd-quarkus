@@ -15,18 +15,17 @@
  */
 package nl.topicus.eduarte.model.entities.dbs.trajecten.templates;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.hibernate.annotations.ForeignKey;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.ForeignKey;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import nl.topicus.eduarte.model.entities.organisatie.InstellingEntiteit;
 import nl.topicus.eduarte.model.entities.personen.Persoon;
 
@@ -34,59 +33,48 @@ import nl.topicus.eduarte.model.entities.personen.Persoon;
  */
 @Entity()
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "Instelling")
-public class AanwezigenTemplate extends InstellingEntiteit
-{
+public class AanwezigenTemplate extends InstellingEntiteit {
 	@Column(nullable = false)
 	@Enumerated(EnumType.STRING)
 	private AanwezigeType type;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "persoon", nullable = true)
-	@ForeignKey(name = "FK_AanweTempl_persoon")
+	@JoinColumn(name = "persoon", nullable = true, foreignKey = @ForeignKey(name = "FK_AanweTempl_persoon"))
 	private Persoon persoon;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "handelingTemplate", nullable = true)
-	@ForeignKey(name = "FK_AanweTempl_handTempl")
+	@JoinColumn(name = "handelingTemplate", nullable = true, foreignKey = @ForeignKey(name = "FK_AanweTempl_handTempl"))
 	private GeplandeBegeleidingsHandelingTemplate handeling;
 
-	public AanwezigenTemplate()
-	{
+	public AanwezigenTemplate() {
 	}
 
-	public Persoon getPersoon()
-	{
+	public Persoon getPersoon() {
 		return persoon;
 	}
 
-	public void setPersoon(Persoon persoon)
-	{
+	public void setPersoon(Persoon persoon) {
 		this.persoon = persoon;
 	}
 
-	public GeplandeBegeleidingsHandelingTemplate getHandeling()
-	{
+	public GeplandeBegeleidingsHandelingTemplate getHandeling() {
 		return handeling;
 	}
 
-	public void setHandeling(GeplandeBegeleidingsHandelingTemplate handeling)
-	{
+	public void setHandeling(GeplandeBegeleidingsHandelingTemplate handeling) {
 		this.handeling = handeling;
 	}
 
-	public AanwezigeType getType()
-	{
+	public AanwezigeType getType() {
 		return type;
 	}
 
-	public void setType(AanwezigeType type)
-	{
+	public void setType(AanwezigeType type) {
 		this.type = type;
 	}
 
 	@Override
-	public String toString()
-	{
+	public String toString() {
 		if (AanwezigeType.GeselecteerdePersoon.equals(getType()))
 			return getPersoon().getVolledigeNaam();
 

@@ -15,17 +15,16 @@
  */
 package nl.topicus.eduarte.model.entities.dbs.trajecten.templates;
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.hibernate.annotations.ForeignKey;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.ForeignKey;
+import jakarta.persistence.Inheritance;
+import jakarta.persistence.InheritanceType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import nl.topicus.eduarte.model.entities.organisatie.InstellingEntiteit;
 
 @Entity()
@@ -33,8 +32,7 @@ import nl.topicus.eduarte.model.entities.organisatie.InstellingEntiteit;
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "Instelling")
 public abstract class TrajectTemplateKoppeling extends InstellingEntiteit {
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "trajTemplAutoKopp", nullable = false)
-	@ForeignKey(name = "FK_TrajTemplKopp_TTAutoKopp")
+	@JoinColumn(name = "trajTemplAutoKopp", nullable = false, foreignKey = @ForeignKey(name = "FK_TrajTemplKopp_TTAutoKopp"))
 	private TrajectTemplateAutomatischeKoppeling trajectTemplateAutomatischeKoppeling;
 
 	public TrajectTemplateAutomatischeKoppeling getTrajectTemplateAutomatischeKoppeling() {

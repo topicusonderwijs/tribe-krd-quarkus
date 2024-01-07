@@ -18,8 +18,8 @@ package nl.topicus.eduarte.model.entities.taxonomie.mbo.cgo;
 import java.util.List;
 import java.util.Map;
 
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
+import jakarta.persistence.Entity;
+import jakarta.persistence.OneToMany;
 
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
@@ -28,7 +28,7 @@ import org.hibernate.annotations.CascadeType;
  */
 @Entity
 public class IJkpunt extends CompetentieNiveauVerzameling {
-	@OneToMany(mappedBy = "ijkpunt", cascade = javax.persistence.CascadeType.REMOVE)
+	@OneToMany(mappedBy = "ijkpunt", cascade = jakarta.persistence.CascadeType.REMOVE)
 	@Cascade({ CascadeType.REMOVE })
 	private List<RapportageTemplateIJkpunt> rapportageTemplates;
 
@@ -45,17 +45,6 @@ public class IJkpunt extends CompetentieNiveauVerzameling {
 	}
 
 	public boolean isBereikt(Map<Leerpunt, CompetentieNiveau> beoordelingMap) {
-		// FIXME conversie
-		// for (Entry<Leerpunt, CompetentieNiveau> curEntry :
-		// getCompetentieNiveauAsMap().entrySet()) {
-		// CompetentieNiveau behaaldeBeoordeling =
-		// beoordelingMap.get(curEntry.getKey());
-		// CompetentieNiveau ijkpuntNiveau = curEntry.getValue();
-		// if (behaaldeBeoordeling == null
-		// || behaaldeBeoordeling.getScore().getWaarde() <
-		// ijkpuntNiveau.getScore().getWaarde())
-		// return false;
-		// }
 		return true;
 	}
 }

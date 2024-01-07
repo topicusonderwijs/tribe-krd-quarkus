@@ -15,17 +15,17 @@
  */
 package nl.topicus.eduarte.model.entities.inschrijving;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.hibernate.annotations.Table;
+import jakarta.persistence.Table;
 
 import nl.topicus.eduarte.model.entities.organisatie.Brin;
 import nl.topicus.eduarte.model.entities.organisatie.InstellingEntiteit;
@@ -34,7 +34,7 @@ import nl.topicus.eduarte.model.entities.organisatie.InstellingEntiteit;
  */
 @Entity()
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "Instelling")
-@Table(appliesTo = "Vervolgonderwijs")
+@Table(name = "Vervolgonderwijs")
 public class Vervolgonderwijs extends InstellingEntiteit {
 	public enum SoortVervolgonderwijs {
 		Intern, BRIN, Overig, Onbekend;

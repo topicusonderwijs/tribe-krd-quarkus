@@ -20,7 +20,7 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.Embeddable;
+import jakarta.persistence.Embeddable;
 
 import nl.topicus.eduarte.model.duo.bron.vo.waardelijsten.CumiCategorie;
 import nl.topicus.eduarte.model.duo.bron.vo.waardelijsten.CumiRatio;
@@ -126,7 +126,6 @@ public class Cumi implements Serializable {
 			if (persoon.getDatumInNederland() == null) {
 				categorie = null;
 			} else {
-				// FIXME: conversie
 				var inNederland = 3; // TimeUtil.getInstance().getDifferenceInYears(peildatum, persoon.getDatumInNederland());
 				if (inNederland < 1)
 					ratio = CumiRatio.d1;

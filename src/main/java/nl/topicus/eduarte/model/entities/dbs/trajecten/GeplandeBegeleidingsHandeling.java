@@ -17,17 +17,16 @@ package nl.topicus.eduarte.model.entities.dbs.trajecten;
 
 import java.util.Date;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.hibernate.annotations.ForeignKey;
 
+import jakarta.persistence.Basic;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.ForeignKey;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import nl.topicus.eduarte.model.entities.participatie.Afspraak;
 
 /**
@@ -44,9 +43,8 @@ public abstract class GeplandeBegeleidingsHandeling extends BegeleidingsHandelin
 	private boolean verslagVersturen;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "afspraak", nullable = true)
+	@JoinColumn(name = "afspraak", nullable = true, foreignKey = @ForeignKey(name = "FK_handeling_afspraak"))
 	@Basic(optional = false)
-	@ForeignKey(name = "FK_handeling_afspraak")
 	private Afspraak afspraak;
 
 	public GeplandeBegeleidingsHandeling() {

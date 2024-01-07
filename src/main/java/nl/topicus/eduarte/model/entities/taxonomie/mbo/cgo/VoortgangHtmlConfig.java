@@ -18,20 +18,20 @@ package nl.topicus.eduarte.model.entities.taxonomie.mbo.cgo;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.OneToMany;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.OneToMany;
 
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
-import org.hibernate.annotations.Table;
+import jakarta.persistence.Table;
 
 import nl.topicus.eduarte.model.entities.begineinddatum.BeginEinddatumInstellingEntiteit;
 
 @Entity
-@Table(appliesTo = "VoortgangHtmlConfig")
+@Table(name = "VoortgangHtmlConfig")
 public class VoortgangHtmlConfig extends BeginEinddatumInstellingEntiteit implements
 IRapportageTemplateIJkpuntenProvider
 {
@@ -55,7 +55,7 @@ IRapportageTemplateIJkpuntenProvider
 	@Column(nullable = false)
 	private int aantalBeoordelingen;
 
-	@OneToMany(mappedBy = "config", cascade = javax.persistence.CascadeType.REMOVE)
+	@OneToMany(mappedBy = "config", cascade = jakarta.persistence.CascadeType.REMOVE)
 	@Cascade( {CascadeType.REMOVE})
 	private List<RapportageTemplateIJkpunt> ijkpunten = new ArrayList<>();
 

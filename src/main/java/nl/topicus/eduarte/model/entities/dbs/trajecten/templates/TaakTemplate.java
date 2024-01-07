@@ -15,28 +15,25 @@
  */
 package nl.topicus.eduarte.model.entities.dbs.trajecten.templates;
 
-import javax.persistence.Basic;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.hibernate.annotations.ForeignKey;
 
+import jakarta.persistence.Basic;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.ForeignKey;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import nl.topicus.eduarte.model.entities.dbs.trajecten.TaakSoort;
 
 /**
  */
 @Entity()
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "Instelling")
-public class TaakTemplate extends BegeleidingsHandelingTemplate
-{
+public class TaakTemplate extends BegeleidingsHandelingTemplate {
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "taakSoort", nullable = true)
+	@JoinColumn(name = "taakSoort", nullable = true, foreignKey = @ForeignKey(name = "FK_TaakTempl_soort"))
 	@Basic(optional = false)
-	@ForeignKey(name = "FK_TaakTempl_soort")
 	private TaakSoort taakSoort;
 
 	public TaakSoort getTaakSoort() {

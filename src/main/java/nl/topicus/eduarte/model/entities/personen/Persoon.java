@@ -19,20 +19,21 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OrderBy;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.xml.bind.annotation.XmlEnum;
-import javax.xml.bind.annotation.XmlEnumValue;
-import javax.xml.bind.annotation.XmlType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.OrderBy;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
+import jakarta.xml.bind.annotation.XmlEnum;
+import jakarta.xml.bind.annotation.XmlEnumValue;
+import jakarta.xml.bind.annotation.XmlType;
 
 import org.hibernate.annotations.BatchSize;
 import org.hibernate.annotations.Cache;
@@ -263,19 +264,10 @@ implements VrijVeldable<PersoonVrijVeld>, IBijlageKoppelEntiteit<PersoonBijlage>
 	@BatchSize(size = 20)
 	private List<PersoonVrijVeld> vrijVelden = new ArrayList<>();
 
-	/**
-	 * Mapping ipv keiharde query, aangezien we dit ook in unit tests willen kunnen
-	 * blijven gebruiken. Een <tt>@OneToMany</tt> levert niet die vervelende extra
-	 * query op die Olav heeft weggewerkt, zoals bij de <tt>OneToOne</tt> mapping
-	 * gebeurt. In afwachting van de oplossing voor
-	 * <a href="http://opensource.atlassian.com/projects/hibernate/browse/HHH-3930"
-	 * >HHH-3930</a>, de bug die we aangemeld hebben voor dit euvel.
-	 */
-	// FIXME aanpassen wanneer HHH-3930 opgelost is.
-	@OneToMany(mappedBy = "persoon", fetch = FetchType.LAZY)
+	@OneToOne(mappedBy = "persoon", fetch = FetchType.LAZY)
 	@Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "Instelling")
 	@BatchSize(size = 20)
-	private List<Deelnemer> deelnemers = new ArrayList<>();
+	private Deelnemer deelnemer;
 
 	@Bron
 	@Column(nullable = true)
@@ -611,12 +603,12 @@ implements VrijVeldable<PersoonVrijVeld>, IBijlageKoppelEntiteit<PersoonBijlage>
 		this.vrijVelden = vrijVelden;
 	}
 
-	public List<Deelnemer> getDeelnemers() {
-		return deelnemers;
+	public Deelnemer getDeelnemer() {
+		return deelnemer;
 	}
 
-	public void setDeelnemers(List<Deelnemer> deelnemers) {
-		this.deelnemers = deelnemers;
+	public void setDeelnemer(Deelnemer deelnemer) {
+		this.deelnemer = deelnemer;
 	}
 
 	public CumiRatio getCumiRatio() {
@@ -759,31 +751,26 @@ implements VrijVeldable<PersoonVrijVeld>, IBijlageKoppelEntiteit<PersoonBijlage>
 
 	@Override
 	public boolean bestaatBijlage(Bijlage bijlage) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public PersoonBijlage addBijlage(Bijlage bijlage) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public PersoonVrijVeld newVrijVeld() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public List<PersoonVrijVeld> getVrijVelden(VrijVeldCategorie categorie) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public String getVrijVeldWaarde(String naam) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

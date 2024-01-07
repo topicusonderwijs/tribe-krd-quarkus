@@ -17,21 +17,20 @@ package nl.topicus.eduarte.model.entities.dbs.trajecten;
 
 import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.hibernate.annotations.ForeignKey;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.ForeignKey;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 import nl.topicus.eduarte.model.entities.organisatie.InstellingEntiteit;
 import nl.topicus.eduarte.model.entities.personen.Medewerker;
 
@@ -54,13 +53,11 @@ public class BegeleidingsHandelingStatusovergang extends InstellingEntiteit {
 	private BegeleidingsHandelingsStatussoort naarStatus;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "begeleidingsHandeling", nullable = true)
-	@ForeignKey(name = "FK_BHStatus_begHand")
+	@JoinColumn(name = "begeleidingsHandeling", nullable = true, foreignKey = @ForeignKey(name = "FK_BHStatus_begHand"))
 	private BegeleidingsHandeling begeleidingsHandeling;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "medewerker", nullable = false)
-	@ForeignKey(name = "FK_BHStatus_medewerker")
+	@JoinColumn(name = "medewerker", nullable = false, foreignKey = @ForeignKey(name = "FK_BHStatus_medewerker"))
 	private Medewerker medewerker;
 
 	public BegeleidingsHandelingStatusovergang() {

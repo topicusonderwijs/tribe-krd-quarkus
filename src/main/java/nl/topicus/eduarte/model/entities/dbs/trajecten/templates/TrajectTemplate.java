@@ -18,21 +18,20 @@ package nl.topicus.eduarte.model.entities.dbs.trajecten.templates;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.hibernate.annotations.ForeignKey;
 import org.hibernate.annotations.Where;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.ForeignKey;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import nl.topicus.eduarte.model.entities.bijlage.Bijlage;
 import nl.topicus.eduarte.model.entities.bijlage.IBijlageKoppelEntiteit;
 import nl.topicus.eduarte.model.entities.dbs.trajecten.TrajectSoort;
@@ -73,8 +72,7 @@ public class TrajectTemplate extends InstellingEntiteit implements IBijlageKoppe
 	private boolean opEersteDagSchooljaar;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "trajectSoort", nullable = false)
-	@ForeignKey(name = "FK_TrajTempl_soort")
+	@JoinColumn(name = "trajectSoort", nullable = false, foreignKey = @ForeignKey(name = "FK_TrajTempl_soort"))
 	private TrajectSoort trajectSoort;
 
 	@Column(nullable = true)
@@ -249,13 +247,11 @@ public class TrajectTemplate extends InstellingEntiteit implements IBijlageKoppe
 
 	@Override
 	public boolean bestaatBijlage(Bijlage bijlage) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public TrajectTemplateBijlage addBijlage(Bijlage bijlage) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 }

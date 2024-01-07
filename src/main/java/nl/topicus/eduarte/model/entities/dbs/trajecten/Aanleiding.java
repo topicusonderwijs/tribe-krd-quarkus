@@ -15,15 +15,14 @@
  */
 package nl.topicus.eduarte.model.entities.dbs.trajecten;
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.hibernate.annotations.ForeignKey;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.ForeignKey;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import nl.topicus.eduarte.model.entities.dbs.ZorgvierkantObject;
 import nl.topicus.eduarte.model.entities.dbs.bijzonderheden.Bijzonderheid;
 import nl.topicus.eduarte.model.entities.dbs.gedrag.Incident;
@@ -35,33 +34,27 @@ import nl.topicus.eduarte.model.entities.organisatie.InstellingEntiteit;
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "Instelling")
 public class Aanleiding extends InstellingEntiteit implements ZorgvierkantObject {
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "incident", nullable = true)
-	@ForeignKey(name = "FK_Aanleiding_incident")
+	@JoinColumn(name = "incident", nullable = true, foreignKey = @ForeignKey(name = "FK_Aanleiding_incident"))
 	private Incident incident;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "notitie", nullable = true)
-	@ForeignKey(name = "FK_Aanleiding_notitie")
+	@JoinColumn(name = "notitie", nullable = true, foreignKey = @ForeignKey(name = "FK_Aanleiding_notitie"))
 	private Notitie notitie;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "deelnemerTest", nullable = true)
-	@ForeignKey(name = "FK_Aanleiding_test")
+	@JoinColumn(name = "deelnemerTest", nullable = true, foreignKey = @ForeignKey(name = "FK_Aanleiding_test"))
 	private DeelnemerTest deelnemerTest;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "Bijzonderheid", nullable = true)
-	@ForeignKey(name = "FK_Aanleiding_bijzheid")
+	@JoinColumn(name = "Bijzonderheid", nullable = true, foreignKey = @ForeignKey(name = "FK_Aanleiding_bijzheid"))
 	private Bijzonderheid bijzonderheid;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "begeleidingsHandeling", nullable = true)
-	@ForeignKey(name = "FK_Aanleiding_begHand")
+	@JoinColumn(name = "begeleidingsHandeling", nullable = true, foreignKey = @ForeignKey(name = "FK_Aanleiding_begHand"))
 	private BegeleidingsHandeling begeleidingsHandeling;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "Traject", nullable = false)
-	@ForeignKey(name = "FK_Aanleiding_traject")
+	@JoinColumn(name = "Traject", nullable = false, foreignKey = @ForeignKey(name = "FK_Aanleiding_traject"))
 	private Traject traject;
 
 	public Incident getIncident() {
@@ -114,31 +107,26 @@ public class Aanleiding extends InstellingEntiteit implements ZorgvierkantObject
 
 	@Override
 	public boolean isVertrouwelijk() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public Integer getZorglijn() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public String getSecurityId() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public String getVertrouwelijkSecurityId() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public boolean isTonenInZorgvierkant() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 }

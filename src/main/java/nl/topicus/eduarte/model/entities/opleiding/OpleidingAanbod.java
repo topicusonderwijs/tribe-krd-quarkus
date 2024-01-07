@@ -15,11 +15,12 @@
  */
 package nl.topicus.eduarte.model.entities.opleiding;
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.UniqueConstraint;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
 
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
@@ -40,7 +41,7 @@ import nl.topicus.eduarte.model.entities.organisatie.OrganisatieEenheid;
  */
 @Entity()
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "Instelling")
-@javax.persistence.Table(name = "OpleidingAanbod", uniqueConstraints = {
+@Table(name = "OpleidingAanbod", uniqueConstraints = {
 		@UniqueConstraint(columnNames = { "organisatieEenheid", "locatie", "opleiding", "team" }) })
 @IsViewWhenOnNoise
 public class OpleidingAanbod extends InstellingEntiteit
@@ -101,7 +102,6 @@ implements IOrganisatieEenheidLocatieKoppelEntiteit<OpleidingAanbod>, ITeamEntit
 
 	@Override
 	public IOrganisatieEenheidLocatieKoppelbaarEntiteit<OpleidingAanbod> getEntiteit() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 }

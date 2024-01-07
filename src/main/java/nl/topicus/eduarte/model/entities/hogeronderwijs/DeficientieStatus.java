@@ -15,7 +15,6 @@
  */
 package nl.topicus.eduarte.model.entities.hogeronderwijs;
 
-//TODO Paul - Statussen moeten verschillend zijn voor instelling en IB-Groep
 public enum DeficientieStatus {
 	DefInst("D", "Deficiënt volgens instelling"), DefIB("J", "Deficiënt volgens IB-Groep"),
 	NogNietBep("N", "Nog niet bepaald"), Sufficiënt("S", "Sufficiënt"),

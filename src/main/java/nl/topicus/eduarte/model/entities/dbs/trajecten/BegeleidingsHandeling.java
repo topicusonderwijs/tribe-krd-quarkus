@@ -19,24 +19,23 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OrderBy;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.hibernate.annotations.ForeignKey;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.ForeignKey;
+import jakarta.persistence.Inheritance;
+import jakarta.persistence.InheritanceType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OrderBy;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 import nl.topicus.eduarte.model.entities.bijlage.Bijlage;
 import nl.topicus.eduarte.model.entities.bijlage.IBijlageKoppelEntiteit;
 import nl.topicus.eduarte.model.entities.dbs.ZorgvierkantObject;
@@ -49,7 +48,7 @@ import nl.topicus.eduarte.model.entities.personen.Medewerker;
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "Instelling")
 public abstract class BegeleidingsHandeling extends InstellingEntiteit
-implements ZorgvierkantObject, IBijlageKoppelEntiteit<BegeleidingsBijlage> {
+		implements ZorgvierkantObject, IBijlageKoppelEntiteit<BegeleidingsBijlage> {
 	@Column(nullable = true, length = 255)
 	private String omschrijving;
 
@@ -75,18 +74,15 @@ implements ZorgvierkantObject, IBijlageKoppelEntiteit<BegeleidingsBijlage> {
 	private List<VervolgHandeling> voorgaandeHandelingen = new ArrayList<>();
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "Traject", nullable = false)
-	@ForeignKey(name = "FK_BegHand_traject")
+	@JoinColumn(name = "Traject", nullable = false, foreignKey = @ForeignKey(name = "FK_BegHand_traject"))
 	private Traject traject;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "Eigenaar", nullable = false)
-	@ForeignKey(name = "FK_BegHand_Eig")
+	@JoinColumn(name = "Eigenaar", nullable = false, foreignKey = @ForeignKey(name = "FK_BegHand_Eig"))
 	private Medewerker eigenaar;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "Verantwoordelijke", nullable = true)
-	@ForeignKey(name = "FK_BegHand_toeg")
+	@JoinColumn(name = "Verantwoordelijke", nullable = true, foreignKey = @ForeignKey(name = "FK_BegHand_toeg"))
 	private Medewerker toegekendAan;
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "begeleidingsHandeling")
@@ -341,10 +337,6 @@ implements ZorgvierkantObject, IBijlageKoppelEntiteit<BegeleidingsBijlage> {
 
 	public String getSoort() {
 		return soort;
-	}
-
-	public void setSoort(@SuppressWarnings("unused") String soort) {
-		// dit veld kan niet aangepast worden.
 	}
 
 	public abstract String handelingsSoort();

@@ -15,62 +15,52 @@
  */
 package nl.topicus.eduarte.model.entities.dbs.trajecten;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.hibernate.annotations.ForeignKey;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.ForeignKey;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import nl.topicus.eduarte.model.entities.organisatie.InstellingEntiteit;
 
 @Entity()
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "Instelling")
-public class ToegestaneStatusSoort extends InstellingEntiteit
-{
+public class ToegestaneStatusSoort extends InstellingEntiteit {
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "trajectsoort", nullable = false)
-	@ForeignKey(name = "FK_ToegStatSrt_trajSrt")
+	@JoinColumn(name = "trajectsoort", nullable = false, foreignKey = @ForeignKey(name = "FK_ToegStatSrt_trajSrt"))
 	private TrajectSoort trajectsoort;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "trajectStatusSoort", nullable = false)
-	@ForeignKey(name = "FK_ToegSS_trajStSrt")
+	@JoinColumn(name = "trajectStatusSoort", nullable = false, foreignKey = @ForeignKey(name = "FK_ToegSS_trajStSrt"))
 	private TrajectStatusSoort trajectStatusSoort;
 
 	@Column(nullable = false)
 	private boolean defaultStatus;
 
-	public TrajectSoort getTrajectsoort()
-	{
+	public TrajectSoort getTrajectsoort() {
 		return trajectsoort;
 	}
 
-	public void setTrajectsoort(TrajectSoort trajectsoort)
-	{
+	public void setTrajectsoort(TrajectSoort trajectsoort) {
 		this.trajectsoort = trajectsoort;
 	}
 
-	public TrajectStatusSoort getTrajectStatusSoort()
-	{
+	public TrajectStatusSoort getTrajectStatusSoort() {
 		return trajectStatusSoort;
 	}
 
-	public void setTrajectStatusSoort(TrajectStatusSoort trajectStatusSoort)
-	{
+	public void setTrajectStatusSoort(TrajectStatusSoort trajectStatusSoort) {
 		this.trajectStatusSoort = trajectStatusSoort;
 	}
 
-	public boolean isDefaultStatus()
-	{
+	public boolean isDefaultStatus() {
 		return defaultStatus;
 	}
 
-	public void setDefaultStatus(boolean defaultStatus)
-	{
+	public void setDefaultStatus(boolean defaultStatus) {
 		this.defaultStatus = defaultStatus;
 	}
 }

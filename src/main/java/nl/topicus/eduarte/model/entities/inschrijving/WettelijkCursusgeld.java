@@ -157,6 +157,7 @@ public class WettelijkCursusgeld
 	 *         verbintenis geen wettelijk cursusgeld hoeft te worden berekend of kan
 	 *         worden berekend.
 	 */
+	@SuppressWarnings("deprecation")
 	public static BigDecimal getOpleidingBedrag(Verbintenis verbintenis, Schooljaar schooljaar)
 	{
 		BigDecimal result = null;

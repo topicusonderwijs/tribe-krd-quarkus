@@ -15,18 +15,17 @@
  */
 package nl.topicus.eduarte.model.entities.dbs.trajecten.templates;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.hibernate.annotations.ForeignKey;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.ForeignKey;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import nl.topicus.eduarte.model.entities.dbs.bijzonderheden.BijzonderheidCategorie;
 import nl.topicus.eduarte.model.entities.dbs.testen.TestDefinitie;
 import nl.topicus.eduarte.model.entities.organisatie.InstellingEntiteit;
@@ -37,18 +36,15 @@ import nl.topicus.eduarte.model.entities.organisatie.InstellingEntiteit;
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "Instelling")
 public class AanleidingTemplate extends InstellingEntiteit {
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "trajectTemplate", nullable = false)
-	@ForeignKey(name = "FK_AanlTempl_trajectTemplate")
+	@JoinColumn(name = "trajectTemplate", nullable = false, foreignKey = @ForeignKey(name = "FK_AanlTempl_trajectTemplate"))
 	private TrajectTemplate trajectTemplate;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "testDefinitie", nullable = true)
-	@ForeignKey(name = "FK_AanlTempl_testDefinitie")
+	@JoinColumn(name = "testDefinitie", nullable = true, foreignKey = @ForeignKey(name = "FK_AanlTempl_testDefinitie"))
 	private TestDefinitie testDefinitie;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "bijzonderheidCategorie", nullable = true)
-	@ForeignKey(name = "FK_AanlTempl_categorie")
+	@JoinColumn(name = "bijzonderheidCategorie", nullable = true, foreignKey = @ForeignKey(name = "FK_AanlTempl_categorie"))
 	private BijzonderheidCategorie bijzonderheidCategorie;
 
 	@Column(nullable = false)

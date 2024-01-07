@@ -15,16 +15,15 @@
  */
 package nl.topicus.eduarte.model.entities.dbs.trajecten;
 
-import javax.persistence.Basic;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.hibernate.annotations.ForeignKey;
 
+import jakarta.persistence.Basic;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.ForeignKey;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import nl.topicus.eduarte.model.entities.dbs.testen.DeelnemerTest;
 import nl.topicus.eduarte.model.entities.dbs.testen.TestDefinitie;
 
@@ -32,17 +31,14 @@ import nl.topicus.eduarte.model.entities.dbs.testen.TestDefinitie;
  */
 @Entity()
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "Instelling")
-public class TestAfname extends GeplandeBegeleidingsHandeling
-{
+public class TestAfname extends GeplandeBegeleidingsHandeling {
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "TestDefinitie", nullable = true)
+	@JoinColumn(name = "TestDefinitie", nullable = true, foreignKey = @ForeignKey(name = "FK_TestAfname_definitie"))
 	@Basic(optional = false)
-	@ForeignKey(name = "FK_TestAfname_definitie")
 	private TestDefinitie testDefinitie;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "deelnemerTest", nullable = true)
-	@ForeignKey(name = "FK_TestAfname_deelnemerTest")
+	@JoinColumn(name = "deelnemerTest", nullable = true, foreignKey = @ForeignKey(name = "FK_TestAfname_deelnemerTest"))
 	private DeelnemerTest deelnemerTest;
 
 	public DeelnemerTest getDeelnemerTest() {
@@ -63,7 +59,6 @@ public class TestAfname extends GeplandeBegeleidingsHandeling
 
 	@Override
 	public String handelingsSoort() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 }

@@ -18,17 +18,17 @@ package nl.topicus.eduarte.model.entities.inschrijving;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.Lob;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Lob;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 
 import org.hibernate.annotations.BatchSize;
 import org.hibernate.annotations.Cache;
@@ -327,19 +327,16 @@ public class Intakegesprek extends InstellingEntiteit implements VrijVeldable<In
 
 	@Override
 	public IntakegesprekVrijVeld newVrijVeld() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public List<IntakegesprekVrijVeld> getVrijVelden(VrijVeldCategorie categorie) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public String getVrijVeldWaarde(String naam) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 }
