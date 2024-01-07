@@ -15,21 +15,21 @@
  */
 package nl.topicus.eduarte.model.entities.taxonomie.mbo.cgo;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
-import org.hibernate.annotations.Table;
+import jakarta.persistence.Table;
 
 import nl.topicus.eduarte.model.entities.begineinddatum.BeginEinddatumLandelijkOfInstellingEntiteit;
 import nl.topicus.eduarte.model.entities.personen.Medewerker;
 
 @Entity
-@Table(appliesTo = "RapportageTemplate")
+@Table(name = "RapportageTemplate")
 public class RapportageTemplate extends BeginEinddatumLandelijkOfInstellingEntiteit {
 	public enum OutputForm {
 		HTML {

@@ -18,14 +18,14 @@ package nl.topicus.eduarte.model.entities.dbs.gedrag;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.Lob;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Lob;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 
 import org.hibernate.annotations.BatchSize;
 import org.hibernate.annotations.Cache;
@@ -114,43 +114,36 @@ IBijlageKoppelEntiteit<IncidentBijlage>, ZorgvierkantObject
 
 	@Override
 	public boolean isVertrouwelijk() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public Integer getZorglijn() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public String getSecurityId() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public String getVertrouwelijkSecurityId() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public boolean isTonenInZorgvierkant() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public boolean bestaatBijlage(Bijlage bijlage) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public IncidentBijlage addBijlage(Bijlage bijlage) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 }

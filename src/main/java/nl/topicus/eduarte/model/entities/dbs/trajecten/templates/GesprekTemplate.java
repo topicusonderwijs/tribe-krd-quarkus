@@ -15,28 +15,25 @@
  */
 package nl.topicus.eduarte.model.entities.dbs.trajecten.templates;
 
-import javax.persistence.Basic;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.hibernate.annotations.ForeignKey;
 
+import jakarta.persistence.Basic;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.ForeignKey;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import nl.topicus.eduarte.model.entities.dbs.trajecten.GesprekSoort;
 
 /**
  */
 @Entity()
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "Instelling")
-public class GesprekTemplate extends GeplandeBegeleidingsHandelingTemplate
-{
+public class GesprekTemplate extends GeplandeBegeleidingsHandelingTemplate {
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "gesprekSoort", nullable = true)
+	@JoinColumn(name = "gesprekSoort", nullable = true, foreignKey = @ForeignKey(name = "FK_GesprekTempl_soort"))
 	@Basic(optional = false)
-	@ForeignKey(name = "FK_GesprekTempl_soort")
 	private GesprekSoort gesprekSoort;
 
 	public GesprekSoort getGesprekSoort() {

@@ -15,14 +15,14 @@
  */
 package nl.topicus.eduarte.model.entities.bijlage;
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.hibernate.annotations.Table;
+import jakarta.persistence.Table;
 
 import nl.topicus.eduarte.model.entities.begineinddatum.BeginEinddatumInstellingEntiteit;
 
@@ -32,7 +32,7 @@ import nl.topicus.eduarte.model.entities.begineinddatum.BeginEinddatumInstelling
  */
 @Entity()
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "Instelling")
-@Table(appliesTo = "BijlageEntiteit")
+@Table(name = "BijlageEntiteit")
 public abstract class BijlageEntiteit extends BeginEinddatumInstellingEntiteit
 {
 	@ManyToOne(fetch = FetchType.LAZY)

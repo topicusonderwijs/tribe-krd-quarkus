@@ -26,7 +26,7 @@ import nl.topicus.eduarte.model.entities.resultaatstructuur.Resultaat;
 public class OnderwijsproductWrappedList {
 	private Verbintenis verbintenis;
 
-	public OnderwijsproductWrappedList(Verbintenis verbintenis, @SuppressWarnings("unused") String arg0) {
+	public OnderwijsproductWrappedList(Verbintenis verbintenis, String arg0) {
 		this.verbintenis = verbintenis;
 	}
 

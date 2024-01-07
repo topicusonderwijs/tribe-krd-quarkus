@@ -19,19 +19,18 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.hibernate.annotations.ForeignKey;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.ForeignKey;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 import nl.topicus.eduarte.model.entities.groep.Groep;
 import nl.topicus.eduarte.model.entities.organisatie.InstellingEntiteit;
 
@@ -41,8 +40,7 @@ import nl.topicus.eduarte.model.entities.organisatie.InstellingEntiteit;
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "Instelling")
 public class GroepTest extends InstellingEntiteit {
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "groep", nullable = false)
-	@ForeignKey(name = "FK_GroepTest_groep")
+	@JoinColumn(name = "groep", nullable = false, foreignKey = @ForeignKey(name = "FK_GroepTest_groep"))
 	private Groep groep;
 
 	@Column
@@ -50,8 +48,7 @@ public class GroepTest extends InstellingEntiteit {
 	private Date afnameDatum;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "testDefinitie", nullable = false)
-	@ForeignKey(name = "FK_GroepTest_testdef")
+	@JoinColumn(name = "testDefinitie", nullable = false, foreignKey = @ForeignKey(name = "FK_GroepTest_testdef"))
 	private TestDefinitie testDefinitie;
 
 	@Column(nullable = false)

@@ -15,19 +15,18 @@
  */
 package nl.topicus.eduarte.model.entities.dbs.trajecten.templates;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
-
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.hibernate.annotations.ForeignKey;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.ForeignKey;
+import jakarta.persistence.Inheritance;
+import jakarta.persistence.InheritanceType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import nl.topicus.eduarte.model.entities.organisatie.InstellingEntiteit;
 
 /**
@@ -40,18 +39,15 @@ public abstract class BegeleidingsHandelingTemplate extends InstellingEntiteit {
 	private String omschrijving;
 
 	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "planning", nullable = false)
-	@ForeignKey(name = "FK_BegHandTemp_planning")
+	@JoinColumn(name = "planning", nullable = false, foreignKey = @ForeignKey(name = "FK_BegHandTemp_planning"))
 	private PlanningTemplate planning;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "eigenaar", nullable = false)
-	@ForeignKey(name = "FK_EigeTempl_eigenaar")
+	@JoinColumn(name = "eigenaar", nullable = false, foreignKey = @ForeignKey(name = "FK_EigeTempl_eigenaar"))
 	private EigenaarTemplate eigenaar;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "toegekendAan", nullable = false)
-	@ForeignKey(name = "FK_EigeTempl_toegekendAan")
+	@JoinColumn(name = "toegekendAan", nullable = false, foreignKey = @ForeignKey(name = "FK_EigeTempl_toegekendAan"))
 	private EigenaarTemplate toegekendAan;
 
 	public String getOmschrijving() {

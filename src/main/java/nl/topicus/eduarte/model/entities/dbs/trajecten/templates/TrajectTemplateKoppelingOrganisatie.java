@@ -15,17 +15,16 @@
  */
 package nl.topicus.eduarte.model.entities.dbs.trajecten.templates;
 
-import javax.persistence.Basic;
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.hibernate.annotations.ForeignKey;
 
+import jakarta.persistence.Basic;
+import jakarta.persistence.DiscriminatorValue;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.ForeignKey;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import nl.topicus.eduarte.model.entities.organisatie.OrganisatieEenheid;
 
 @Entity()
@@ -33,9 +32,8 @@ import nl.topicus.eduarte.model.entities.organisatie.OrganisatieEenheid;
 @DiscriminatorValue("TTKoppelingOrganisatie")
 public class TrajectTemplateKoppelingOrganisatie extends TrajectTemplateKoppeling {
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "organisatieEenheid", nullable = true)
+	@JoinColumn(name = "organisatieEenheid", nullable = true, foreignKey = @ForeignKey(name = "FK_KoppOrgEenh_orgEenh"))
 	@Basic(optional = false)
-	@ForeignKey(name = "FK_KoppOrgEenh_orgEenh")
 	private OrganisatieEenheid organisatieEenheid;
 
 	public TrajectTemplateKoppelingOrganisatie() {

@@ -21,22 +21,20 @@ import java.util.List;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-
 import org.hibernate.annotations.BatchSize;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.hibernate.annotations.ForeignKey;
-import org.hibernate.annotations.Sort;
-import org.hibernate.annotations.SortType;
+import org.hibernate.annotations.SortNatural;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.ForeignKey;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 import nl.topicus.eduarte.model.entities.bijlage.Bijlage;
 import nl.topicus.eduarte.model.entities.bijlage.IBijlageKoppelEntiteit;
 import nl.topicus.eduarte.model.entities.dbs.ZorgvierkantObject;
@@ -55,8 +53,7 @@ implements ZorgvierkantObject, IBijlageKoppelEntiteit<TestBijlage> {
 	public static final String VERTROUWELIJKE_DEELNEMERTEST = "VERTROUWELIJKE_DEELNEMERTEST";
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "deelnemer", nullable = false)
-	@ForeignKey(name = "FK_DeelnemerTest_deelnemer")
+	@JoinColumn(name = "deelnemer", nullable = false, foreignKey = @ForeignKey(name = "FK_DeelnemerTest_deelnemer"))
 	private Deelnemer deelnemer;
 
 	@Column(nullable = false)
@@ -64,8 +61,7 @@ implements ZorgvierkantObject, IBijlageKoppelEntiteit<TestBijlage> {
 	private Date afnameDatum;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "testDefinitie", nullable = false)
-	@ForeignKey(name = "FK_DeelnemerTest_testdef")
+	@JoinColumn(name = "testDefinitie", nullable = false, foreignKey = @ForeignKey(name = "FK_DeelnemerTest_testdef"))
 	private TestDefinitie testDefinitie;
 
 	@Column(nullable = false)
@@ -76,7 +72,7 @@ implements ZorgvierkantObject, IBijlageKoppelEntiteit<TestBijlage> {
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "test")
 	@Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "Instelling")
-	@Sort(type = SortType.NATURAL)
+	@SortNatural
 	private SortedSet<Veldwaarde> veldwaarden = new TreeSet<>();
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "test")
@@ -89,8 +85,7 @@ implements ZorgvierkantObject, IBijlageKoppelEntiteit<TestBijlage> {
 	private List<DeelnemerTestNietTonenInZorgvierkant> nietTonenInZorgvierkants = new ArrayList<>();
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "groepTest", nullable = true)
-	@ForeignKey(name = "FK_DeelnemerTest_groeptest")
+	@JoinColumn(name = "groepTest", nullable = true, foreignKey = @ForeignKey(name = "FK_DeelnemerTest_groeptest"))
 	private GroepTest groepTest;
 
 	public Deelnemer getDeelnemer() {
@@ -171,31 +166,26 @@ implements ZorgvierkantObject, IBijlageKoppelEntiteit<TestBijlage> {
 
 	@Override
 	public boolean bestaatBijlage(Bijlage bijlage) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public TestBijlage addBijlage(Bijlage bijlage) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public String getSecurityId() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public String getVertrouwelijkSecurityId() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public boolean isTonenInZorgvierkant() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 }

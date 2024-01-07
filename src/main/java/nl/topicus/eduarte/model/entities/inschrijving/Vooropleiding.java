@@ -19,16 +19,16 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 
 import org.hibernate.annotations.BatchSize;
 import org.hibernate.annotations.Cache;
@@ -398,55 +398,46 @@ implements IBeginEinddatumEntiteit, IVooropleiding, VrijVeldable<VooropleidingVr
 
 	@Override
 	public VooropleidingVrijVeld newVrijVeld() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public List<VooropleidingVrijVeld> getVrijVelden(VrijVeldCategorie categorie) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public String getVrijVeldWaarde(String naam) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public SoortOnderwijs getSoortOnderwijs() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public String getOmschrijving() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public String getBrincode() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public String getOrganisatieOmschrijving() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public String getNaamVooropleiding() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public Date getEinddatumNotNull() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 }

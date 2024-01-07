@@ -15,15 +15,14 @@
  */
 package nl.topicus.eduarte.model.entities.dbs.bijzonderheden;
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.hibernate.annotations.ForeignKey;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.ForeignKey;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import nl.topicus.eduarte.model.entities.organisatie.InstellingEntiteit;
 
 @Entity()
@@ -32,13 +31,11 @@ public class ToegekendHulpmiddel extends InstellingEntiteit
 {
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "bijzonderheid", nullable = false)
-	@ForeignKey(name = "fk_Bijzonder_ToegekHulpm")
+	@JoinColumn(name = "bijzonderheid", nullable = false, foreignKey = @ForeignKey(name = "fk_Bijzonder_ToegekHulpm"))
 	private Bijzonderheid bijzonderheid;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "hulpmiddel", nullable = false)
-	@ForeignKey(name = "fk_Hulpmiddel_ToegekHulpm")
+	@JoinColumn(name = "hulpmiddel", nullable = false, foreignKey = @ForeignKey(name = "fk_Hulpmiddel_ToegekHulpm"))
 	private Hulpmiddel hulpmiddel;
 
 	public ToegekendHulpmiddel()

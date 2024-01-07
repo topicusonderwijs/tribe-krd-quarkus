@@ -20,25 +20,24 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.Lob;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OrderBy;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-
 import org.hibernate.annotations.BatchSize;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.Comment;
 import org.hibernate.annotations.Formula;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Lob;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OrderBy;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 import nl.topicus.eduarte.model.duo.bron.Bron;
 import nl.topicus.eduarte.model.duo.bron.bve.waardelijsten.Intensiteit;
 import nl.topicus.eduarte.model.duo.criho.annot.Criho;
@@ -666,11 +665,9 @@ IBijlageKoppelEntiteit<VerbintenisBijlage>, IVooropleiding, IBronStatusEntiteit 
 	@BatchSize(size = 20)
 	private List<Inschrijvingsverzoek> inschrijvingsverzoeken = new ArrayList<>();
 
-	// FIXME
-	// @Column(nullable = true)
-	// @Type(type =
-	// "nl.topicus.eduarte.entities.inschrijving.CreditsPerFaseUserType")
-	// private Map<Hoofdfase, Integer> creditsPerFase;
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "verbintenis")
+	@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+	private List<VerbintenisFaseCredits> creditsPerFase = new ArrayList<>();
 
 	@Comment("Breng voor deze verbintenis alleen wettelijk collegegeld in rekening, ook als de student niet aan de voorwaarden m.b.t. nationaliteit, woonadres of behaalde graad voldoet.")
 	@Column(name = "negeerWettCollGeldVoorwaarden")
@@ -1130,85 +1127,71 @@ IBijlageKoppelEntiteit<VerbintenisBijlage>, IVooropleiding, IBronStatusEntiteit 
 
 	@Override
 	public SoortOnderwijs getSoortOnderwijs() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public String getOmschrijving() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public String getBrincode() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public String getOrganisatieOmschrijving() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public String getNaamVooropleiding() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public boolean isDiplomaBehaald() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public Schooladvies getSchooladvies() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public Integer getCitoscore() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public boolean bestaatBijlage(Bijlage bijlage) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public VerbintenisBijlage addBijlage(Bijlage bijlage) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public VerbintenisVrijVeld newVrijVeld() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public List<VerbintenisVrijVeld> getVrijVelden(VrijVeldCategorie categorie) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public String getVrijVeldWaarde(String naam) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public IOrganisatieEenheidLocatieKoppelbaarEntiteit<Verbintenis> getEntiteit() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 }

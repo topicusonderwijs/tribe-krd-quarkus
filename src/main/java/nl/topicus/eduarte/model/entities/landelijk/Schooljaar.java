@@ -66,6 +66,7 @@ public final class Schooljaar implements IBeginEinddatumEntiteit, Comparable<Sch
 
 	private static final ConcurrentHashMap<Integer, Schooljaar> schooljaren = new ConcurrentHashMap<>();
 
+	@SuppressWarnings("deprecation")
 	private Schooljaar(int jaar) {
 		startJaar = jaar;
 		eindJaar = startJaar + 1;
@@ -86,6 +87,7 @@ public final class Schooljaar implements IBeginEinddatumEntiteit, Comparable<Sch
 	 *
 	 * @return het start jaar van het schooljaar dat actief is op de peildatum.
 	 */
+	@SuppressWarnings("deprecation")
 	private static int bepaalStartJaarVanSchooljaarActiefOpDatum(Date datum) {
 		var jaar = datum.getYear();
 		var startVanSchooljaarBeginnendInJaar = new Date(jaar, Calendar.AUGUST, 1);

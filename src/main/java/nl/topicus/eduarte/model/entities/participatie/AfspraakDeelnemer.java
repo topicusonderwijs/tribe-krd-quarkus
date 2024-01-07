@@ -15,18 +15,18 @@
  */
 package nl.topicus.eduarte.model.entities.participatie;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.Immutable;
-import org.hibernate.annotations.Table;
+import jakarta.persistence.Table;
 
 import nl.topicus.eduarte.model.entities.ViewEntiteit;
 import nl.topicus.eduarte.model.entities.contract.Contract;
@@ -44,7 +44,7 @@ import nl.topicus.eduarte.model.entities.personen.Deelnemer;
 @Entity
 @Immutable
 @Cache(usage = CacheConcurrencyStrategy.READ_ONLY, region = "Instelling")
-@Table(appliesTo = "AfspraakDeelnemer")
+@Table(name = "AfspraakDeelnemer")
 public class AfspraakDeelnemer extends ViewEntiteit {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "afspraak", nullable = true)

@@ -17,47 +17,41 @@ package nl.topicus.eduarte.model.entities.dbs.trajecten;
 
 import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.hibernate.annotations.ForeignKey;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.ForeignKey;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 import nl.topicus.eduarte.model.entities.organisatie.InstellingEntiteit;
 import nl.topicus.eduarte.model.entities.personen.Medewerker;
 
 @Entity()
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "Instelling")
-public class TrajectStatusovergang extends InstellingEntiteit
-{
+public class TrajectStatusovergang extends InstellingEntiteit {
 	@Column(nullable = false)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date datumTijd;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "medewerker", nullable = false)
-	@ForeignKey(name = "FK_TrajStato_medewerker")
+	@JoinColumn(name = "medewerker", nullable = false, foreignKey = @ForeignKey(name = "FK_TrajStato_medewerker"))
 	private Medewerker medewerker;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "traject", nullable = false)
-	@ForeignKey(name = "FK_TrajStato_traject")
+	@JoinColumn(name = "traject", nullable = false, foreignKey = @ForeignKey(name = "FK_TrajStato_traject"))
 	private Traject traject;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "vanStatus", nullable = true)
-	@ForeignKey(name = "FK_TrajStato_van")
+	@JoinColumn(name = "vanStatus", nullable = true, foreignKey = @ForeignKey(name = "FK_TrajStato_van"))
 	private TrajectStatusSoort vanStatus;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "naarStatus", nullable = false)
-	@ForeignKey(name = "FK_TrajStato_naar")
+	@JoinColumn(name = "naarStatus", nullable = false, foreignKey = @ForeignKey(name = "FK_TrajStato_naar"))
 	private TrajectStatusSoort naarStatus;
 
 	public TrajectStatusovergang() {

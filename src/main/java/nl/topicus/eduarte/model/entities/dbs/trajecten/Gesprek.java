@@ -15,36 +15,33 @@
  */
 package nl.topicus.eduarte.model.entities.dbs.trajecten;
 
-import javax.persistence.Basic;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.Lob;
-import javax.persistence.ManyToOne;
-
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.hibernate.annotations.ForeignKey;
+
+import jakarta.persistence.Basic;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.ForeignKey;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Lob;
+import jakarta.persistence.ManyToOne;
 
 /**
  */
 @Entity()
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "Instelling")
-public class Gesprek extends GeplandeBegeleidingsHandeling
-{
+public class Gesprek extends GeplandeBegeleidingsHandeling {
 	public static final String GESPREK = "GESPREK";
 
 	@Lob()
 	private String samenvatting;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "GesprekSoort", nullable = true)
+	@JoinColumn(name = "GesprekSoort", nullable = true, foreignKey = @ForeignKey(name = "FK_Gesprek_soort"))
 	@Basic(optional = false)
-	@ForeignKey(name = "FK_Gesprek_soort")
 	private GesprekSoort gesprekSoort;
 
-	public Gesprek()
-	{
+	public Gesprek() {
 		soort = "Gesprek";
 	}
 

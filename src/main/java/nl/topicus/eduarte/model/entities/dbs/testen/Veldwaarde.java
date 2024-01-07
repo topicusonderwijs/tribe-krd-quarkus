@@ -15,17 +15,16 @@
  */
 package nl.topicus.eduarte.model.entities.dbs.testen;
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.hibernate.annotations.ForeignKey;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.ForeignKey;
+import jakarta.persistence.Inheritance;
+import jakarta.persistence.InheritanceType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import nl.topicus.eduarte.model.entities.organisatie.InstellingEntiteit;
 
 /**
@@ -35,20 +34,16 @@ import nl.topicus.eduarte.model.entities.organisatie.InstellingEntiteit;
 @Entity()
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "Instelling")
-public abstract class Veldwaarde extends InstellingEntiteit
-{
+public abstract class Veldwaarde extends InstellingEntiteit {
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(nullable = false, name = "testVeld")
-	@ForeignKey(name = "FK_Veldwaarde_testVeld")
+	@JoinColumn(nullable = false, name = "testVeld", foreignKey = @ForeignKey(name = "FK_Veldwaarde_testVeld"))
 	private TestVeld testVeld;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(nullable = false, name = "test")
-	@ForeignKey(name = "FK_Veldwaarde_test")
+	@JoinColumn(nullable = false, name = "test", foreignKey = @ForeignKey(name = "FK_Veldwaarde_test"))
 	private DeelnemerTest test;
 
-	public Veldwaarde()
-	{
+	public Veldwaarde() {
 	}
 
 	public TestVeld getTestVeld() {

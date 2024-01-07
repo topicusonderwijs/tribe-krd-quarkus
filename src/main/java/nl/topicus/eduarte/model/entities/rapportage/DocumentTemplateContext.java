@@ -98,7 +98,7 @@ public enum DocumentTemplateContext {
 			return "debiteur";
 		}
 
-		@SuppressWarnings("unchecked")
+		@SuppressWarnings({"unchecked", "rawtypes"})
 		@Override
 		public Class getContextClass() {
 			return nl.topicus.eduarte.model.entities.Debiteur.class;
@@ -110,7 +110,7 @@ public enum DocumentTemplateContext {
 			return "factuur";
 		}
 
-		@SuppressWarnings("unchecked")
+		@SuppressWarnings({"unchecked", "rawtypes"})
 		@Override
 		/*
 		 * Dit returned de Deelnemer class omdat gegenereerde facturen ook gekoppeld

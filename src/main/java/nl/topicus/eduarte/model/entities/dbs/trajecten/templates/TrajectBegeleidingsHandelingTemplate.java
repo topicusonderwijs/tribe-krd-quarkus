@@ -15,16 +15,15 @@
  */
 package nl.topicus.eduarte.model.entities.dbs.trajecten.templates;
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.hibernate.annotations.ForeignKey;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.ForeignKey;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 import nl.topicus.eduarte.model.entities.organisatie.InstellingEntiteit;
 
 /**
@@ -32,39 +31,31 @@ import nl.topicus.eduarte.model.entities.organisatie.InstellingEntiteit;
 @Entity()
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "Instelling")
 @Table(name = "TrajectBegHandelingTemplate")
-public class TrajectBegeleidingsHandelingTemplate extends InstellingEntiteit
-{
+public class TrajectBegeleidingsHandelingTemplate extends InstellingEntiteit {
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "trajectTemplate", nullable = false)
-	@ForeignKey(name = "FK_trajectBegHT_traject")
+	@JoinColumn(name = "trajectTemplate", nullable = false, foreignKey = @ForeignKey(name = "FK_trajectBegHT_traject"))
 	private TrajectTemplate trajectTemplate;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "begeleidingsHandeling", nullable = false)
-	@ForeignKey(name = "FK_trajectBegHT_handeling")
+	@JoinColumn(name = "begeleidingsHandeling", nullable = false, foreignKey = @ForeignKey(name = "FK_trajectBegHT_handeling"))
 	private BegeleidingsHandelingTemplate begeleidingsHandeling;
 
-	public TrajectBegeleidingsHandelingTemplate()
-	{
+	public TrajectBegeleidingsHandelingTemplate() {
 	}
 
-	public TrajectTemplate getTrajectTemplate()
-	{
+	public TrajectTemplate getTrajectTemplate() {
 		return trajectTemplate;
 	}
 
-	public void setTrajectTemplate(TrajectTemplate trajectTemplate)
-	{
+	public void setTrajectTemplate(TrajectTemplate trajectTemplate) {
 		this.trajectTemplate = trajectTemplate;
 	}
 
-	public BegeleidingsHandelingTemplate getBegeleidingsHandeling()
-	{
+	public BegeleidingsHandelingTemplate getBegeleidingsHandeling() {
 		return begeleidingsHandeling;
 	}
 
-	public void setBegeleidingsHandeling(BegeleidingsHandelingTemplate begeleidingsHandeling)
-	{
+	public void setBegeleidingsHandeling(BegeleidingsHandelingTemplate begeleidingsHandeling) {
 		this.begeleidingsHandeling = begeleidingsHandeling;
 	}
 }

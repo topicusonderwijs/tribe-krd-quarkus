@@ -15,22 +15,18 @@
  */
 package nl.topicus.eduarte.model.entities.organisatie;
 
-import java.util.regex.Pattern;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 
 @Entity()
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "Landelijk")
 public class Brin extends ExterneOrganisatie {
 	public static final String BRIN_FORMAT = "([0-9]{2}[a-zA-Z0-9]{2})([0-9]{1,2})?";
-
-	private static final Pattern BRIN_REGEXP = Pattern.compile(BRIN_FORMAT);
 
 	public enum Onderwijssector {
 		AK("Administratiekantoor", false), AMB("Ambulante Begeleiding"), AOC("Agrarisch Opleidings Centrum"),

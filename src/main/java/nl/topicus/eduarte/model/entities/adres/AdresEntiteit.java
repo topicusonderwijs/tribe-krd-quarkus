@@ -15,16 +15,15 @@
  */
 package nl.topicus.eduarte.model.entities.adres;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.hibernate.annotations.Table;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 import nl.topicus.eduarte.model.duo.bron.Bron;
 import nl.topicus.eduarte.model.entities.IsViewWhenOnNoise;
 import nl.topicus.eduarte.model.entities.begineinddatum.BeginEinddatumLandelijkOfInstellingEntiteit;
@@ -35,7 +34,7 @@ import nl.topicus.eduarte.model.entities.begineinddatum.BeginEinddatumLandelijkO
  */
 @Entity()
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "Instelling")
-@Table(appliesTo = "AdresEntiteit")
+@Table(name = "AdresEntiteit")
 @IsViewWhenOnNoise
 public abstract class AdresEntiteit<T extends AdresEntiteit<T>> extends
 BeginEinddatumLandelijkOfInstellingEntiteit

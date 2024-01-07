@@ -18,15 +18,15 @@ package nl.topicus.eduarte.model.entities.opleiding;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OrderBy;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OrderBy;
 
 import org.hibernate.annotations.BatchSize;
 import org.hibernate.annotations.Cache;
@@ -74,7 +74,7 @@ IBijlageKoppelEntiteit<OpleidingBijlage> {
 	private Verbintenisgebied verbintenisgebied;
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "opleiding")
-	@OrderBy(value = "locatie, organisatieEenheid")
+	// @OrderBy(value = "locatie, organisatieEenheid")
 	@Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "Instelling")
 	private List<OpleidingAanbod> aanbod;
 
@@ -157,7 +157,7 @@ IBijlageKoppelEntiteit<OpleidingBijlage> {
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "opleiding")
 	@Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "Instelling")
-	@OrderBy("cohort ASC")
+	// @OrderBy("cohort ASC")
 	private List<Curriculum> curriculums;
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "opleiding")
@@ -355,37 +355,31 @@ IBijlageKoppelEntiteit<OpleidingBijlage> {
 
 	@Override
 	public boolean bestaatBijlage(Bijlage bijlage) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public OpleidingBijlage addBijlage(Bijlage bijlage) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public OpleidingVrijVeld newVrijVeld() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public List<OpleidingVrijVeld> getVrijVelden(VrijVeldCategorie categorie) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public String getVrijVeldWaarde(String naam) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public List<OpleidingAanbod> getOrganisatieEenheidLocatieKoppelingen() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

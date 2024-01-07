@@ -19,25 +19,24 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.JoinColumn;
-import javax.persistence.Lob;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-
 import org.hibernate.annotations.BatchSize;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.Comment;
-import org.hibernate.annotations.ForeignKey;
 
+import jakarta.persistence.Basic;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.ForeignKey;
+import jakarta.persistence.Inheritance;
+import jakarta.persistence.InheritanceType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Lob;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 import nl.topicus.eduarte.model.entities.begineinddatum.BeginEinddatumInstellingEntiteit;
 import nl.topicus.eduarte.model.entities.bijlage.Bijlage;
 import nl.topicus.eduarte.model.entities.bijlage.IBijlageKoppelEntiteit;
@@ -53,7 +52,7 @@ import nl.topicus.eduarte.model.entities.personen.Medewerker;
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "Instelling")
 public class Traject extends BeginEinddatumInstellingEntiteit
-implements ZorgvierkantObject, IBijlageKoppelEntiteit<TrajectBijlage> {
+		implements ZorgvierkantObject, IBijlageKoppelEntiteit<TrajectBijlage> {
 	public static final String TRAJECT = "TRAJECT";
 
 	public static final String VERTROUWELIJK_TRAJECT = "VERTROUWELIJK_TRAJECT";
@@ -75,23 +74,19 @@ implements ZorgvierkantObject, IBijlageKoppelEntiteit<TrajectBijlage> {
 	private Integer zorglijn;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "trajectSoort", nullable = false)
-	@ForeignKey(name = "FK_Traject_soort")
+	@JoinColumn(name = "trajectSoort", nullable = false, foreignKey = @ForeignKey(name = "FK_Traject_soort"))
 	private TrajectSoort trajectSoort;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "trajectStatusSoort", nullable = false)
-	@ForeignKey(name = "FK_Traject_trajSSrt")
+	@JoinColumn(name = "trajectStatusSoort", nullable = false, foreignKey = @ForeignKey(name = "FK_Traject_trajSSrt"))
 	private TrajectStatusSoort trajectStatusSoort;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "deelnemer", nullable = false)
-	@ForeignKey(name = "FK_Traject_deelnemer")
+	@JoinColumn(name = "deelnemer", nullable = false, foreignKey = @ForeignKey(name = "FK_Traject_deelnemer"))
 	private Deelnemer deelnemer;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "verbintenis", nullable = true)
-	@ForeignKey(name = "FK_Traject_verbintenis")
+	@JoinColumn(name = "verbintenis", nullable = true, foreignKey = @ForeignKey(name = "FK_Traject_verbintenis"))
 	private Verbintenis verbintenis;
 
 	/**
@@ -123,8 +118,7 @@ implements ZorgvierkantObject, IBijlageKoppelEntiteit<TrajectBijlage> {
 	private List<TrajectUitvoerder> uitvoerders = new ArrayList<>();
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "Verantwoordelijke", nullable = false)
-	@ForeignKey(name = "FK_Traject_Verantw")
+	@JoinColumn(name = "Verantwoordelijke", nullable = false, foreignKey = @ForeignKey(name = "FK_Traject_Verantw"))
 	private Medewerker verantwoordelijke;
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "traject")
@@ -132,8 +126,7 @@ implements ZorgvierkantObject, IBijlageKoppelEntiteit<TrajectBijlage> {
 	private List<TrajectBijlage> bijlagen = new ArrayList<>();
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "Template", nullable = true)
-	@ForeignKey(name = "FK_Traject_Template")
+	@JoinColumn(name = "Template", nullable = true, foreignKey = @ForeignKey(name = "FK_Traject_Template"))
 	@Comment("Met trajecttemplate "
 			+ "kunnen de meeste velden van een traject automatisch gevuld worden. Let op: bij het "
 			+ "wijzigen van dit veld zullen waardes overschreven worden. Koppelingen naar "
@@ -339,31 +332,26 @@ implements ZorgvierkantObject, IBijlageKoppelEntiteit<TrajectBijlage> {
 
 	@Override
 	public boolean bestaatBijlage(Bijlage bijlage) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public TrajectBijlage addBijlage(Bijlage bijlage) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public String getSecurityId() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public String getVertrouwelijkSecurityId() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public boolean isTonenInZorgvierkant() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 }

@@ -15,10 +15,10 @@
  */
 package nl.topicus.eduarte.model.entities.signalering.settings;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Entity;
+import jakarta.persistence.Basic;
+import jakarta.persistence.Column;
+import jakarta.persistence.DiscriminatorValue;
+import jakarta.persistence.Entity;
 
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
@@ -29,7 +29,7 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 public class DeadlineEventAbonnementConfiguration extends AbstractEventAbonnementConfiguration<Integer> {
 
 	@Basic(optional = false)
-	@Column(nullable = true)
+	@Column(nullable = true, name="config_value")
 	private Integer value = 10;
 
 	public DeadlineEventAbonnementConfiguration() {

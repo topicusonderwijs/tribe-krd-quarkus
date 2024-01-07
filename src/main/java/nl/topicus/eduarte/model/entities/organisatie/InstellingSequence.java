@@ -15,22 +15,21 @@
  */
 package nl.topicus.eduarte.model.entities.organisatie;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.UniqueConstraint;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.UniqueConstraint;
 
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.hibernate.annotations.Table;
+import jakarta.persistence.Table;
 
 /**
  * Bewaart gegevens voor de custom SequenceGenerators per instelling.
  *
  */
 @Entity()
-@Table(appliesTo = "InstellingSequence")
+@Table(name = "InstellingSequence", uniqueConstraints = { @UniqueConstraint(columnNames = { "naam", "organisatie" }) })
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "Instelling")
-@javax.persistence.Table(uniqueConstraints = { @UniqueConstraint(columnNames = { "naam", "organisatie" }) })
 public class InstellingSequence extends InstellingEntiteit {
 	// Naam van de sequence.
 	@Column(nullable = false)

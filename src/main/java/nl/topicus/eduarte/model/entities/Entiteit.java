@@ -15,13 +15,14 @@
  */
 package nl.topicus.eduarte.model.entities;
 
+import java.io.Serializable;
 import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
-import javax.persistence.Version;
+import jakarta.persistence.Column;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.MappedSuperclass;
+import jakarta.persistence.Version;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
@@ -29,7 +30,7 @@ import org.hibernate.annotations.Parameter;
 import nl.topicus.eduarte.model.entities.security.authentication.Account;
 
 @MappedSuperclass
-public abstract class Entiteit
+public abstract class Entiteit implements Serializable
 {
 	public static final String STR_CREATED_AT = "CREATED_AT";
 

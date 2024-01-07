@@ -18,31 +18,28 @@ package nl.topicus.eduarte.model.entities.dbs.testen;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OrderBy;
-import javax.persistence.UniqueConstraint;
-
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.hibernate.annotations.ForeignKey;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.ForeignKey;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OrderBy;
+import jakarta.persistence.UniqueConstraint;
 import nl.topicus.eduarte.model.entities.organisatie.InstellingEntiteit;
 import nl.topicus.eduarte.model.entities.participatie.AfspraakType;
 
 @Entity()
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "Instelling")
-@javax.persistence.Table(uniqueConstraints = {@UniqueConstraint(columnNames = {"naam",
-"organisatie"})})
-public class TestDefinitie extends InstellingEntiteit
-{
+@jakarta.persistence.Table(uniqueConstraints = { @UniqueConstraint(columnNames = { "naam",
+		"organisatie" }) })
+public class TestDefinitie extends InstellingEntiteit {
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(nullable = false, name = "categorie")
-	@ForeignKey(name = "FK_Testdefinitie_categorie")
+	@JoinColumn(nullable = false, name = "categorie", foreignKey = @ForeignKey(name = "FK_Testdefinitie_categorie"))
 	private TestCategorie categorie;
 
 	@Column(length = 100, nullable = false)
