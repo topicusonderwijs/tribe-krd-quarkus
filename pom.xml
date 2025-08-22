@@ -23,7 +23,7 @@
 	</organization>
 	<inceptionYear>2022</inceptionYear>
 	<properties>
-		<compiler-plugin.version>3.12.1</compiler-plugin.version>
+		<compiler-plugin.version>3.14.0</compiler-plugin.version>
 		<maven.compiler.parameters>true</maven.compiler.parameters>
 		<maven.compiler.source>21</maven.compiler.source>
 		<maven.compiler.target>21</maven.compiler.target>
@@ -31,8 +31,8 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<quarkus.platform.artifact-id>quarkus-bom</quarkus.platform.artifact-id>
 		<quarkus.platform.group-id>io.quarkus.platform</quarkus.platform.group-id>
-		<quarkus.platform.version>3.6.4</quarkus.platform.version>
-		<surefire-plugin.version>3.2.3</surefire-plugin.version>
+		<quarkus.platform.version>3.25.3</quarkus.platform.version>
+		<surefire-plugin.version>3.5.3</surefire-plugin.version>
 	</properties>
 	<dependencyManagement>
 		<dependencies>
@@ -104,12 +104,13 @@
 				<version>${compiler-plugin.version}</version>
 				<configuration>
 					<parameters>${maven.compiler.parameters}</parameters>
+					<release>21</release>
 				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-enforcer-plugin</artifactId>
-				<version>3.4.1</version>
+				<version>3.6.1</version>
 				<dependencies>
 					<dependency>
 						<groupId>com.github.ferstl</groupId>
@@ -179,7 +180,8 @@
 				</plugins>
 			</build>
 			<properties>
-				<quarkus.package.type>native</quarkus.package.type>
+				<quarkus.native.enabled>true</quarkus.native.enabled>
+				<quarkus.package.jar.enabled>false</quarkus.package.jar.enabled>
 			</properties>
 		</profile>
 	</profiles>
