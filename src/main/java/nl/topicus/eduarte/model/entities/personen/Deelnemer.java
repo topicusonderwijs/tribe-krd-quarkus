@@ -19,6 +19,11 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.hibernate.annotations.BatchSize;
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.annotations.Comment;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -31,12 +36,6 @@ import jakarta.persistence.OrderBy;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import jakarta.persistence.UniqueConstraint;
-
-import org.hibernate.annotations.BatchSize;
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.hibernate.annotations.Comment;
-
 import nl.topicus.eduarte.model.duo.bron.Bron;
 import nl.topicus.eduarte.model.duo.criho.annot.Criho;
 import nl.topicus.eduarte.model.entities.BronEntiteitStatus;
@@ -66,7 +65,6 @@ import nl.topicus.eduarte.model.entities.organisatie.InstellingEntiteit;
 @IsViewWhenOnNoise
 public class Deelnemer extends InstellingEntiteit implements IBijlageKoppelEntiteit<DeelnemerBijlage>,
 IOrganisatieEenheidLocatieKoppelbaarEntiteit<Verbintenis>, IBronStatusEntiteit {
-	@BatchSize(size = 20)
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "persoon", nullable = false)
 	@Bron

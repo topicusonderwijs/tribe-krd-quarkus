@@ -368,7 +368,6 @@ IBijlageKoppelEntiteit<VerbintenisBijlage>, IVooropleiding, IBronStatusEntiteit 
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "deelnemer", nullable = false)
-	@BatchSize(size = 20)
 	private Deelnemer deelnemer;
 
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -379,7 +378,6 @@ IBijlageKoppelEntiteit<VerbintenisBijlage>, IVooropleiding, IBronStatusEntiteit 
 	@Criho
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "opleiding", nullable = true)
-	@BatchSize(size = 20)
 	private Opleiding opleiding;
 
 	@ManyToOne(fetch = FetchType.LAZY)

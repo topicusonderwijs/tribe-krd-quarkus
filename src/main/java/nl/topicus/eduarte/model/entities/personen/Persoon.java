@@ -19,6 +19,11 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.hibernate.annotations.BatchSize;
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.annotations.Comment;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -34,12 +39,6 @@ import jakarta.persistence.TemporalType;
 import jakarta.xml.bind.annotation.XmlEnum;
 import jakarta.xml.bind.annotation.XmlEnumValue;
 import jakarta.xml.bind.annotation.XmlType;
-
-import org.hibernate.annotations.BatchSize;
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.hibernate.annotations.Comment;
-
 import nl.topicus.eduarte.model.duo.bron.Bron;
 import nl.topicus.eduarte.model.duo.bron.vo.waardelijsten.CumiCategorie;
 import nl.topicus.eduarte.model.duo.bron.vo.waardelijsten.CumiRatio;
@@ -266,7 +265,6 @@ implements VrijVeldable<PersoonVrijVeld>, IBijlageKoppelEntiteit<PersoonBijlage>
 
 	@OneToOne(mappedBy = "persoon", fetch = FetchType.LAZY)
 	@Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "Instelling")
-	@BatchSize(size = 20)
 	private Deelnemer deelnemer;
 
 	@Bron
