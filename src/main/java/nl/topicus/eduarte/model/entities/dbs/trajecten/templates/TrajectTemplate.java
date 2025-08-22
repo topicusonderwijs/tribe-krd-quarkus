@@ -20,7 +20,7 @@ import java.util.List;
 
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.hibernate.annotations.Where;
+import org.hibernate.annotations.SQLRestriction;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -80,12 +80,12 @@ public class TrajectTemplate extends InstellingEntiteit implements IBijlageKoppe
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "trajectTemplate")
 	@Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "Instelling")
-	@Where(clause = "koppelingsRol = 'UITVOERENDE'")
+	@SQLRestriction("koppelingsRol = 'UITVOERENDE'")
 	private List<GekoppeldeTemplate> uitvoerenden = new ArrayList<>();
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "trajectTemplate")
 	@Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "Instelling")
-	@Where(clause = "koppelingsRol = 'VERANTWOORDELIJKE'")
+	@SQLRestriction("koppelingsRol = 'VERANTWOORDELIJKE'")
 	private List<GekoppeldeTemplate> verantwoordelijken = new ArrayList<>();
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "trajectTemplate")

@@ -18,12 +18,11 @@ package nl.topicus.eduarte.model.entities.taxonomie;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.annotations.SQLRestriction;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
-
-import org.hibernate.annotations.Where;
-
 import nl.topicus.eduarte.model.entities.criteriumbank.Criterium;
 import nl.topicus.eduarte.model.entities.inschrijving.SoortVooropleiding.SoortOnderwijs;
 import nl.topicus.eduarte.model.entities.landelijk.Cohort;
@@ -44,14 +43,14 @@ public class Verbintenisgebied extends TaxonomieElement {
 	 * via een opleiding zijn gekoppeld!
 	 */
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "verbintenisgebied")
-	@Where(clause = "opleiding is null")
+	@SQLRestriction( "opleiding is null")
 	private List<Productregel> productregels;
 
 	/**
 	 * De landelijke criteria die aan dit verbintenisgebied zijn gekoppeld.
 	 */
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "verbintenisgebied")
-	@Where(clause = "opleiding is null")
+	@SQLRestriction( "opleiding is null")
 	private List<Criterium> criteria;
 
 	public List<VerbintenisgebiedOnderdeel> getOnderdelen() {

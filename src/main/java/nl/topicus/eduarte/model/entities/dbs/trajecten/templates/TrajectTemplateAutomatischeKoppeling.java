@@ -19,6 +19,10 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.annotations.SQLRestriction;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -26,11 +30,6 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
-
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.hibernate.annotations.Where;
-
 import nl.topicus.eduarte.model.entities.organisatie.InstellingEntiteit;
 
 @Entity(name = "trajTemplAutoKopp")
@@ -38,17 +37,17 @@ import nl.topicus.eduarte.model.entities.organisatie.InstellingEntiteit;
 public class TrajectTemplateAutomatischeKoppeling extends InstellingEntiteit {
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "trajectTemplateAutomatischeKoppeling", targetEntity = TrajectTemplateKoppeling.class)
 	@Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "Instelling")
-	@Where(clause = "DTYPE='TTKoppelingOpleiding'")
+	@SQLRestriction( "DTYPE='TTKoppelingOpleiding'")
 	private List<TrajectTemplateKoppelingOpleiding> opleidingKoppelingen = new ArrayList<>();
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "trajectTemplateAutomatischeKoppeling", targetEntity = TrajectTemplateKoppeling.class)
 	@Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "Instelling")
-	@Where(clause = "DTYPE='TTKoppelingOrganisatie'")
+	@SQLRestriction("DTYPE='TTKoppelingOrganisatie'")
 	private List<TrajectTemplateKoppelingOrganisatie> organisatieKoppelingen = new ArrayList<>();
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "trajectTemplateAutomatischeKoppeling", targetEntity = TrajectTemplateKoppeling.class)
 	@Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "Instelling")
-	@Where(clause = "DTYPE='TTKoppelingKenmerk'")
+	@SQLRestriction("DTYPE='TTKoppelingKenmerk'")
 	private List<TrajectTemplateKoppelingKenmerk> kenmerkKoppelingen = new ArrayList<>();
 
 	@Column(nullable = true)
