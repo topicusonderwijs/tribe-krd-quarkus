@@ -16,5 +16,16 @@
 package nl.topicus.eduarte.model.iris;
 
 public enum TijdSpecificatie {
+    TIJDSTIP("tijdstip"),
+    PERIODE("periode");
 
+    private final String value;
+
+    TijdSpecificatie(String v) {
+        value = v;
+    }
+
+    public String value() {
+        return value;
+    }
 }

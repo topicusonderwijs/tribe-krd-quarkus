@@ -17,4 +17,14 @@ package nl.topicus.eduarte.model.security;
 
 public enum RechtenSoort {
 
+    BEHEER,
+    BESTUUR,
+    INSTELLING,
+    DEELNEMER,
+    OUDER,
+    ONDERVRAAGDE,
+    DIGITAALAANMELDER,
+    UPLOADER,
+    EXTERNEORGANISATIE,
+    ANONIEM;
 }

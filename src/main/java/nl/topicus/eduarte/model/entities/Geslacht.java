@@ -16,5 +16,36 @@
 package nl.topicus.eduarte.model.entities;
 
 public enum Geslacht {
+    Man("heer", "De heer", 1),
+    Vrouw("mevrouw", "Mevrouw", 2),
+    Onbekend("heer of mevrouw", "De heer of mevrouw", 3);
 
+    private String aanhef;
+
+    private String adressering;
+
+    private int nummer;
+
+    private Geslacht(String aanhef, String adressering, int nummer) {
+        this.aanhef = aanhef;
+        this.adressering = adressering;
+        this.nummer = nummer;
+    }
+
+    @Override
+    public String toString() {
+        return name();
+    }
+
+    public String getAanhef() {
+        return aanhef;
+    }
+
+    public String getAdressering() {
+        return adressering;
+    }
+
+    public int getNummer() {
+        return nummer;
+    }
 }

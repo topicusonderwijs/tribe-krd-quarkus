@@ -16,5 +16,22 @@
 package nl.topicus.eduarte.model.leerplicht;
 
 public enum SoortLeerplichtDeelnemer {
+	LEERPLICHTIG("Leerplichtigen"),
+	KWALIFICATIE_PLICHTIG("Kwalificatieplichtigen"),
+	VSV("Doorstroompunt verzuim 18+"),
+	WTOS_WSF("WTOS / WSF2000"),
+	VANAF_23_JAAR("23 jaar of ouder");
 
+	private String naam;
+
+	private SoortLeerplichtDeelnemer(String naam)
+	{
+		this.naam = naam;
+	}
+
+	@Override
+	public String toString()
+	{
+		return naam;
+	}
 }

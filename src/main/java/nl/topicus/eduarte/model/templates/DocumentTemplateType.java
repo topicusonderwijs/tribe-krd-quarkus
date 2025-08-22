@@ -16,5 +16,54 @@
 package nl.topicus.eduarte.model.templates;
 
 public enum DocumentTemplateType {
+	CSV("CSV bestand", "text/csv"),
+	RTF("RTF document", "text/rtf"),
+	JRXML("Jasper Reports document", "application/octet-stream"),
+	PDF("PDF document", "application/pdf"),
+	XLS("Excel 97-2003 document", "application/vnd.ms-excel"),
+	XLSX("Excel document", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"),
+	DOCX("Word document",
+			"application/vnd.openxmlformats-officedocument.wordprocessingml.document"),
+	DOTX("Word template",
+			"application/vnd.openxmlformats-officedocument.wordprocessingml.template"),
+	DOCM("Word document (macro-enabled)", "application/vnd.ms-word.document.macroEnabled.12"),
+	DOTM("Word template (macro-enabled)", "application/vnd.ms-word.template.macroEnabled.12"),
+	HTML("HTML-bestand", "text/html"),
+	ZIP("Zip bestand", "application/zip"),
+	XML("XML-bestand", "text/xml"),
+	XHTML("XHTML-bestand", "application/xhtml+xml");
+
+	private DocumentTemplateType(String omschrijving, String mimeType)
+	{
+		this.omschrijving = omschrijving;
+		this.mimeType = mimeType;
+	}
+
+	private String omschrijving;
+
+	private String mimeType;
+	/**
+	 * @return een mooie omschrijving van het bestandstype.
+	 */
+	public String getOmschrijving()
+	{
+		return omschrijving;
+	}
+
+	/**
+	 * @return geeft de mimetype in string formaat terug.
+	 */
+	public String getMimeType()
+	{
+		return mimeType;
+	}
+
+	/**
+	 * @return extensie exclusief "."
+	 */
+	public String getFileExtension()
+	{
+		return name().toLowerCase();
+	}
 
 }

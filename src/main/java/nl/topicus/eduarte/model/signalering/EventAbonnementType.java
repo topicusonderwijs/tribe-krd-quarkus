@@ -16,5 +16,54 @@
 package nl.topicus.eduarte.model.signalering;
 
 public enum EventAbonnementType {
+	/**
+	 * Stuur signalen naar de medewerker indien deze mentor is van de deelnemer waar het signaal
+	 * over gaat.
+	 */
+	Mentor,
 
+	/**
+	 * Stuur signalen naar de medewerker indien deze docent is van de deelnemer waar het signaal
+	 * over gaat.
+	 */
+	Docent,
+
+	/**
+	 * Stuur signalen naar de medewerker indien deze als uitvoerende staat van de deelnemer waar het
+	 * signaal over gaat.
+	 */
+	Uitvoerende,
+
+	/**
+	 * Stuur signalen naar de medewerker indien deze als verantwoordelijke staat van de deelnemer
+	 * waar het signaal over gaat.
+	 */
+	Verantwoordelijke,
+
+	/**
+	 * Stuur signalen naar de medewerker indien de deelnemer waar het signaal over gaat in een groep
+	 * zit die expliciet door de medewerker geselecteerd is.
+	 */
+	GeselecteerdeGroepen,
+
+	/**
+	 * Stuur signalen naar de medewerker indien de deelnemer waar het signaal over gaat expliciet
+	 * door de medewerker geselecteerd is.
+	 */
+	GeselecteerdeDeelnemers,
+
+	/**
+	 * Stuur een taakgerelateerd signaal aan een medewerker indien deze onderdeel is van de taak.
+	 */
+	TaakGerelateerd,
+
+	/**
+	 * Stuur een signaal aan een deelnemer voor het self-service portaal.
+	 */
+	SelfService,
+
+	/**
+	 * Stuur een signaal aan een contactpersoon/praktijkbegeleider voor het bedrijfs portaal.
+	 */
+	ExterneOrganisatieContactpersoon;
 }

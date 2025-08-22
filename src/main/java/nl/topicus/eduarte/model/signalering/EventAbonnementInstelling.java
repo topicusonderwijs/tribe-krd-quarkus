@@ -16,5 +16,7 @@
 package nl.topicus.eduarte.model.signalering;
 
 public enum EventAbonnementInstelling {
-
+    Uit,
+    Aan,
+    Verplicht;
 }

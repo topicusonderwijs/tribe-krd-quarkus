@@ -16,5 +16,21 @@
 package nl.topicus.eduarte.model.iris;
 
 public enum DagDeel {
+    VOOR_SCHOOLTIJD("voor_schooltijd"),
+    LESUUR_OCHTEND("lesuur_ochtend"),
+    OCHTENDPAUZE("ochtendpauze"),
+    LUNCHPAUZE("lunchpauze"),
+    MIDDAGPAUZE("middagpauze"),
+    LESUUR_MIDDAG("lesuur_middag"),
+    NA_SCHOOLTIJD("na_schooltijd");
 
+    private final String value;
+
+    DagDeel(String v) {
+        value = v;
+    }
+
+    public String value() {
+        return value;
+    }
 }
