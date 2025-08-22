@@ -18,6 +18,10 @@ package nl.topicus.eduarte.model.entities.dbs.incident;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.annotations.BatchSize;
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -27,11 +31,6 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
-
-import org.hibernate.annotations.BatchSize;
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-
 import nl.topicus.eduarte.model.entities.begineinddatum.BeginEinddatumInstellingEntiteit;
 import nl.topicus.eduarte.model.entities.bijlage.Bijlage;
 import nl.topicus.eduarte.model.entities.bijlage.IBijlageKoppelEntiteit;
@@ -47,7 +46,77 @@ import nl.topicus.eduarte.model.iris.TijdSpecificatie;
 @Entity()
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "Instelling")
 public class IrisIncident extends BeginEinddatumInstellingEntiteit
-implements IBijlageKoppelEntiteit<IrisIncidentBijlage> {
+		implements IBijlageKoppelEntiteit<IrisIncidentBijlage> {
+
+	@Column(length = 50, nullable = false)
+	private String titel;
+
+	@Column(nullable = false)
+	@Enumerated(EnumType.STRING)
+	private Kleur kleur;
+
+	@Column(nullable = true, length = 2)
+	private Integer zorglijn;
+
+	@BatchSize(size = 20)
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "irisIncident")
+	@Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "Instelling")
+	private List<IrisIncidentNietTonenInZorgvierkant> nietTonenInZorgvierkants = new ArrayList<>();
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "irisIncident")
+	@Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "Instelling")
+	private List<IrisBetrokkene> betrokkene = new ArrayList<>();
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "Instelling")
+	@JoinColumn(name = "auteur", nullable = false)
+	private Medewerker auteur;
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "Instelling")
+	@JoinColumn(name = "categorie", nullable = false)
+	private IncidentCategorie categorie;
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "incident")
+	private List<IrisIncidentLocatie> incidentLocatie = new ArrayList<>();
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "incident")
+	private List<IrisIncidentVoorwerp> incidentVoorwerp = new ArrayList<>();
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "irisIncident")
+	@Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "Instelling")
+	private List<IrisIncidentBijlage> bijlagen = new ArrayList<>();
+
+	@ManyToOne(optional = true)
+	@JoinColumn(nullable = true)
+	private OrganisatieEenheid organisatieEenheid;
+
+	@Column(nullable = false)
+	private boolean afgerond;
+
+	@Column(nullable = false)
+	private boolean onzeker;
+
+	@Column(nullable = false)
+	private boolean vertrouwelijk;
+
+	@Lob
+	private String toelichting;
+
+	@Column(nullable = false)
+	@Enumerated(EnumType.STRING)
+	private TijdSpecificatie tijdType;
+
+	@Column(nullable = true)
+	@Enumerated(EnumType.STRING)
+	private DagDeel dagDeel;
+
+	@Column(nullable = true)
+	private String irisIncidentNummer;
+
+	@Column(nullable = true)
+	private String tijdstip;
+
 	public String getTitel() {
 		return titel;
 	}
@@ -201,75 +270,6 @@ implements IBijlageKoppelEntiteit<IrisIncidentBijlage> {
 	public void setTijdstip(String tijdstip) {
 		this.tijdstip = tijdstip;
 	}
-
-	@Column(length = 50, nullable = false)
-	private String titel;
-
-	@Column(nullable = false)
-	@Enumerated(EnumType.STRING)
-	private Kleur kleur;
-
-	@Column(nullable = true, length = 2)
-	private Integer zorglijn;
-
-	@BatchSize(size = 20)
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "irisIncident")
-	@Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "Instelling")
-	private List<IrisIncidentNietTonenInZorgvierkant> nietTonenInZorgvierkants = new ArrayList<>();
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "irisIncident")
-	@Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "Instelling")
-	private List<IrisBetrokkene> betrokkene = new ArrayList<>();
-
-	@ManyToOne(fetch = FetchType.LAZY)
-	@Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "Instelling")
-	@JoinColumn(name = "auteur", nullable = false)
-	private Medewerker auteur;
-
-	@ManyToOne(fetch = FetchType.LAZY)
-	@Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "Instelling")
-	@JoinColumn(name = "categorie", nullable = false)
-	private IncidentCategorie categorie;
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "incident")
-	private List<IrisIncidentLocatie> incidentLocatie = new ArrayList<>();
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "incident")
-	private List<IrisIncidentVoorwerp> incidentVoorwerp = new ArrayList<>();
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "irisIncident")
-	@Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "Instelling")
-	private List<IrisIncidentBijlage> bijlagen = new ArrayList<>();
-
-	@ManyToOne(optional = true)
-	@JoinColumn(nullable = true)
-	private OrganisatieEenheid organisatieEenheid;
-
-	@Column(nullable = false)
-	private boolean afgerond;
-
-	@Column(nullable = false)
-	private boolean onzeker;
-
-	@Column(nullable = false)
-	private boolean vertrouwelijk;
-
-	@Lob
-	private String toelichting;
-
-	@Column(nullable = false)
-	@Enumerated(EnumType.STRING)
-	private TijdSpecificatie tijdType;
-
-	@Column(nullable = true)
-	@Enumerated(EnumType.STRING)
-	private DagDeel dagDeel;
-
-	@Column(nullable = true)
-	private String irisIncidentNummer;
-
-	@Column(nullable = true)
-	private String tijdstip;
 
 	@Override
 	public boolean bestaatBijlage(Bijlage bijlage) {
