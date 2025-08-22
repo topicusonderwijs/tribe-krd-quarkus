@@ -17,15 +17,11 @@ package nl.topicus.eduarte.model.entities.security.authentication;
 
 import jakarta.persistence.Entity;
 
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-
 /**
  * Account specifiek voor digitaal aanmeld(st)er
  *
  */
 @Entity()
-@Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "Instelling")
 public class BeheerderAccount extends Account
 {
 }

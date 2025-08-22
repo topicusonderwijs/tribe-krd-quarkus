@@ -18,6 +18,8 @@ package nl.topicus.eduarte.model.entities.taxonomie.mbo.cgo;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.annotations.BatchSize;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -25,11 +27,6 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
-
-import org.hibernate.annotations.BatchSize;
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-
 import nl.topicus.eduarte.model.entities.taxonomie.Deelgebied;
 
 /**
@@ -37,7 +34,6 @@ import nl.topicus.eduarte.model.entities.taxonomie.Deelgebied;
  *
  */
 @Entity()
-@Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "Landelijk")
 public class Kerntaak extends Deelgebied {
 	@Column(nullable = true)
 	private int nummer;

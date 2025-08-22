@@ -20,10 +20,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-
 import nl.topicus.eduarte.model.entities.adres.Adres;
 import nl.topicus.eduarte.model.entities.adres.AdresEntiteit;
 
@@ -32,7 +28,6 @@ import nl.topicus.eduarte.model.entities.adres.AdresEntiteit;
  *
  */
 @Entity()
-@Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "Instelling")
 public class PersoonAdres extends AdresEntiteit<PersoonAdres> {
 	/**
 	 * Lazy omdat lijst met adressen vanuit de persoon wordt opgevraagd, oftewel de

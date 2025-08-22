@@ -15,9 +15,6 @@
  */
 package nl.topicus.eduarte.model.entities.dbs.trajecten;
 
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-
 import jakarta.persistence.Basic;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -28,7 +25,6 @@ import jakarta.persistence.ManyToOne;
 import nl.topicus.eduarte.model.entities.personen.Medewerker;
 
 @Entity()
-@Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "Instelling")
 public class Taak extends BegeleidingsHandeling {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "TaakSoort", nullable = true, foreignKey = @ForeignKey(name = "FK_Taak_soort"))

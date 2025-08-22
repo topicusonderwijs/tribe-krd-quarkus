@@ -21,10 +21,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-
 import nl.topicus.eduarte.model.entities.personen.ExterneOrganisatieContactPersoon;
 
 /**
@@ -32,7 +28,6 @@ import nl.topicus.eduarte.model.entities.personen.ExterneOrganisatieContactPerso
  *
  */
 @Entity()
-@Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "Instelling")
 @DiscriminatorValue(value = "ExtOrgContPersAccount")
 public class ExterneOrganisatieContactPersoonAccount extends Account {
 	@ManyToOne(fetch = FetchType.LAZY)

@@ -18,14 +18,10 @@ package nl.topicus.eduarte.model.entities.settings;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-
 /**
  * Setting om per organisatie financieel-gerelateerde zaken in te stellen.
  */
 @Entity()
-@Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "Instelling")
 public class DebiteurNummerSetting extends OrganisatieSetting<DebiteurNummerConfiguration> {
 	@Embedded
 	private DebiteurNummerConfiguration value;

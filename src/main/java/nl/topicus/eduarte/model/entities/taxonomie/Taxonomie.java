@@ -18,13 +18,12 @@ package nl.topicus.eduarte.model.entities.taxonomie;
 import java.util.ArrayList;
 import java.util.List;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
-
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.OneToMany;
 import nl.topicus.eduarte.model.entities.examen.ExamenWorkflowTaxonomie;
 
 /**
@@ -32,7 +31,6 @@ import nl.topicus.eduarte.model.entities.examen.ExamenWorkflowTaxonomie;
  *
  */
 @Entity()
-@Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "Landelijk")
 public class Taxonomie extends TaxonomieElement {
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "taxonomie")
 	private List<TaxonomieElementType> taxonomieElementTypes = new ArrayList<>();

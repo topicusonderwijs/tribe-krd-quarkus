@@ -15,16 +15,12 @@
  */
 package nl.topicus.eduarte.model.entities.organisatie;
 
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 
 @Entity()
-@Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "Landelijk")
 public class Brin extends ExterneOrganisatie {
 	public static final String BRIN_FORMAT = "([0-9]{2}[a-zA-Z0-9]{2})([0-9]{1,2})?";
 

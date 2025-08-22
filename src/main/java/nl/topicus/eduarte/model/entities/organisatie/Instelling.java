@@ -21,16 +21,12 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-
 /**
  * Instelling = BVE instelling. Hieraan worden deelnemers en medewerkers
  * gekoppeld.
  *
  */
 @Entity()
-@Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "Inrichting")
 public class Instelling extends Organisatie {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "code", nullable = true)

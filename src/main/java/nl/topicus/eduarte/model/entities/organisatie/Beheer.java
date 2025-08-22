@@ -17,15 +17,11 @@ package nl.topicus.eduarte.model.entities.organisatie;
 
 import jakarta.persistence.Entity;
 
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-
 /**
  * Organisatie voor instelling overkoepelend beheer. Er is maar 1 instantie van
  * deze class.
  *
  */
 @Entity()
-@Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "Landelijk")
 public class Beheer extends Organisatie {
 }

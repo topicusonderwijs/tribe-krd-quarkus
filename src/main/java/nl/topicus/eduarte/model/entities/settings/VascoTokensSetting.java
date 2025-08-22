@@ -18,15 +18,11 @@ package nl.topicus.eduarte.model.entities.settings;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-
 /**
  * Houdt per organisatie bij of er gebruik gemaakt wordt van de lokale Vasco
  * token server, en waar je die kan vinden.
  */
 @Entity()
-@Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "Instelling")
 public class VascoTokensSetting extends OrganisatieSetting<VascoTokensConfiguration> {
 	@Embedded
 	private VascoTokensConfiguration value;

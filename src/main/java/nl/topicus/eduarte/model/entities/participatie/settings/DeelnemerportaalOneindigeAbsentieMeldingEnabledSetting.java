@@ -18,10 +18,6 @@ package nl.topicus.eduarte.model.entities.participatie.settings;
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-
 import nl.topicus.eduarte.model.entities.settings.OrganisatieSetting;
 
 /**
@@ -29,7 +25,6 @@ import nl.topicus.eduarte.model.entities.settings.OrganisatieSetting;
  * 
  */
 @Entity(name = "DpOneindigeMeldingSetting")
-@Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "Instelling")
 public class DeelnemerportaalOneindigeAbsentieMeldingEnabledSetting extends
 		OrganisatieSetting<Boolean>
 {

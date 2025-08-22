@@ -15,9 +15,6 @@
  */
 package nl.topicus.eduarte.model.entities.dbs.bijlagen;
 
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-
 import jakarta.persistence.Basic;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -29,7 +26,6 @@ import nl.topicus.eduarte.model.entities.dbs.trajecten.Traject;
 import nl.topicus.eduarte.model.entities.personen.DeelnemerBijlage;
 
 @Entity()
-@Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "Instelling")
 public class TrajectBijlage extends DeelnemerBijlage
 {
 	@ManyToOne(fetch = FetchType.LAZY)

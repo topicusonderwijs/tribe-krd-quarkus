@@ -18,16 +18,12 @@ package nl.topicus.eduarte.model.entities.settings;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-
 /**
  * Setting om per organisatie de controle van de resultaatstructuur in te kunnen
  * stellen
  *
  */
 @Entity()
-@Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "Instelling")
 public class ResultaatControleSetting extends OrganisatieSetting<ResultaatControleConfiguration> {
 	@Embedded
 	private ResultaatControleConfiguration value;

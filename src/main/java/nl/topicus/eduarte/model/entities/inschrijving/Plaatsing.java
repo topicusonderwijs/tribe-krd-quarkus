@@ -18,6 +18,10 @@ package nl.topicus.eduarte.model.entities.inschrijving;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.annotations.BatchSize;
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -26,11 +30,6 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
-
-import org.hibernate.annotations.BatchSize;
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-
 import nl.topicus.eduarte.model.duo.bron.Bron;
 import nl.topicus.eduarte.model.duo.criho.annot.Criho;
 import nl.topicus.eduarte.model.entities.VrijVeldable;
@@ -49,7 +48,6 @@ import nl.topicus.eduarte.model.entities.vrijevelden.VrijVeldCategorie;
  *
  */
 @Entity()
-@Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "Instelling")
 public class Plaatsing extends Groepsdeelname implements VrijVeldable<PlaatsingVrijVeld> {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(nullable = true, name = "verbintenis")

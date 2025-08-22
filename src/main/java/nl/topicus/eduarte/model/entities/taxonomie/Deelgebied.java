@@ -17,13 +17,9 @@ package nl.topicus.eduarte.model.entities.taxonomie;
 
 import jakarta.persistence.Entity;
 
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-
 /**
  */
 @Entity()
-@Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "Landelijk")
 public class Deelgebied extends TaxonomieElement {
 	/**
 	 *

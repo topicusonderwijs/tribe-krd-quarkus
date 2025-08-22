@@ -24,15 +24,10 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
-
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-
 import nl.topicus.eduarte.model.entities.organisatie.IOrganisatieEntiteit;
 import nl.topicus.eduarte.model.entities.personen.Deelnemer;
 
 @Entity
-@Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "Instelling")
 public class VrijeMatrix extends CompetentieMatrix implements IOrganisatieEntiteit
 {
 	@OneToMany(mappedBy = "matrix")

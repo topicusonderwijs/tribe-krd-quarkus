@@ -18,10 +18,6 @@ package nl.topicus.eduarte.model.entities.participatie.settings;
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-
 import nl.topicus.eduarte.model.entities.settings.OrganisatieEenheidSetting;
 
 /**
@@ -31,7 +27,6 @@ import nl.topicus.eduarte.model.entities.settings.OrganisatieEenheidSetting;
  *
  */
 @Entity()
-@Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "Instelling")
 public class AbsentiePresentieSetting extends OrganisatieEenheidSetting<AbsentiePresentie> {
 	@Column(name = "absentiePresentie", nullable = true)
 	@Basic(optional = false)

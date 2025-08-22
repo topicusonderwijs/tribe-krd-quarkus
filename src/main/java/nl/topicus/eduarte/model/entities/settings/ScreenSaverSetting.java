@@ -18,15 +18,11 @@ package nl.topicus.eduarte.model.entities.settings;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-
 /**
  * Setting om per organisatie de screensaver in te stellen
  *
  */
 @Entity()
-@Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "Instelling")
 public class ScreenSaverSetting extends OrganisatieSetting<ScreenSaverConfiguration> {
 	@Embedded
 	private ScreenSaverConfiguration value;

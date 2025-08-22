@@ -21,16 +21,11 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.ForeignKey;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-
 import nl.topicus.eduarte.model.entities.bijlage.IBijlageKoppelEntiteit;
 import nl.topicus.eduarte.model.entities.dbs.testen.DeelnemerTest;
 import nl.topicus.eduarte.model.entities.personen.DeelnemerBijlage;
 
 @Entity()
-@Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "Instelling")
 public class TestBijlage extends DeelnemerBijlage {
 	@Basic(optional = false)
 	@ManyToOne(fetch = FetchType.LAZY)

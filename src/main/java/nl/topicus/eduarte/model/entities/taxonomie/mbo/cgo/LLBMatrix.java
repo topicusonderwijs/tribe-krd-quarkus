@@ -17,15 +17,11 @@ package nl.topicus.eduarte.model.entities.taxonomie.mbo.cgo;
 
 import jakarta.persistence.Entity;
 
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-
 /**
  * De matrix voor Leren, Loopbaan en Burgerschap.
  *
  */
 @Entity()
-@Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "Landelijk")
 public class LLBMatrix extends CompetentieMatrix {
 	@Override
 	public String getType() {

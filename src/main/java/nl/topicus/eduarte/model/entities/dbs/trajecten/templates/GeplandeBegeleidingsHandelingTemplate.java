@@ -18,17 +18,16 @@ package nl.topicus.eduarte.model.entities.dbs.trajecten.templates;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-
 /**
  */
 @Entity()
-@Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "Instelling")
 public abstract class GeplandeBegeleidingsHandelingTemplate extends BegeleidingsHandelingTemplate
 {
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "handeling")

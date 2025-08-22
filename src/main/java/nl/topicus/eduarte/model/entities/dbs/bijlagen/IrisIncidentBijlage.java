@@ -20,10 +20,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-
 import nl.topicus.eduarte.model.entities.bijlage.BijlageEntiteit;
 import nl.topicus.eduarte.model.entities.bijlage.IBijlageKoppelEntiteit;
 import nl.topicus.eduarte.model.entities.dbs.incident.IrisIncident;
@@ -33,7 +29,6 @@ import nl.topicus.eduarte.model.entities.dbs.incident.IrisIncident;
  *
  */
 @Entity()
-@Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "Instelling")
 public class IrisIncidentBijlage extends BijlageEntiteit
 {
 	@ManyToOne(fetch = FetchType.LAZY)

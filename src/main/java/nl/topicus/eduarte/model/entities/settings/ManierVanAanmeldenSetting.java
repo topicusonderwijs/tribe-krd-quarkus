@@ -21,9 +21,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-
 /**
  * Manieren van aanmelden voor digitaal aanmelden, afhankelijk van de setting
  * kan een groep opleiding gekozen worden, of er kan niet aangemeld worden bij
@@ -31,7 +28,6 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
  *
  */
 @Entity()
-@Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "Instelling")
 public class ManierVanAanmeldenSetting extends OrganisatieEenheidSetting<ManierVanAanmelden> {
 	@Column(name = "ManierVanAanmelden", nullable = true)
 	@Basic(optional = false)

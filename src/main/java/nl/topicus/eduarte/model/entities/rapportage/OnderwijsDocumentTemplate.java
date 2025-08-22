@@ -23,10 +23,6 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-
 import nl.topicus.eduarte.model.entities.taxonomie.Taxonomie;
 
 /**
@@ -34,7 +30,6 @@ import nl.topicus.eduarte.model.entities.taxonomie.Taxonomie;
  *
  */
 @Entity()
-@Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "Instelling")
 public class OnderwijsDocumentTemplate extends DocumentTemplate {
 	public enum ExamenDocumentTemplateType {
 		Onderwijsovereenkomst {

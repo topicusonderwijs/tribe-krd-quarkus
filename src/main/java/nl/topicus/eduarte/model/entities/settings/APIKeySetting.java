@@ -18,13 +18,9 @@ package nl.topicus.eduarte.model.entities.settings;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-
 /**
  */
 @Entity()
-@Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "Instelling")
 public class APIKeySetting extends OrganisatieSetting<APIKeyConfiguration> {
 	@Embedded
 	private APIKeyConfiguration value;

@@ -17,9 +17,6 @@ package nl.topicus.eduarte.model.entities.signalering.settings;
 
 import jakarta.persistence.Entity;
 
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-
 /**
  * Entiteit voor het instellen van signalering op instellingsniveau. Alle medewerkers van
  * de instelling krijgen automatisch deze signaleringsinstellingen. Een instelling kan een
@@ -28,7 +25,6 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
  * 
  */
 @Entity()
-@Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "Instelling")
 public class GlobaalAbonnementSetting extends EventAbonnementSetting
 {
 	public GlobaalAbonnementSetting()

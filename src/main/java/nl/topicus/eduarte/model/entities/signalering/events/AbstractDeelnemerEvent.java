@@ -19,15 +19,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-
 import nl.topicus.eduarte.model.entities.personen.Deelnemer;
 import nl.topicus.eduarte.model.entities.signalering.Event;
 
 @Entity()
-@Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "Instelling")
 public abstract class AbstractDeelnemerEvent extends Event {
 	@JoinColumn(name = "deelnemerId", nullable = true)
 	@ManyToOne(optional = false, fetch = FetchType.LAZY, targetEntity = Deelnemer.class)

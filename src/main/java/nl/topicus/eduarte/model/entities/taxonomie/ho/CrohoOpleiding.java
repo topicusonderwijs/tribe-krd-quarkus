@@ -18,16 +18,15 @@ package nl.topicus.eduarte.model.entities.taxonomie.ho;
 import java.util.ArrayList;
 import java.util.List;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.OneToMany;
 import nl.topicus.eduarte.model.entities.taxonomie.Verbintenisgebied;
 
 @Entity()
-@Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "Landelijk")
 public class CrohoOpleiding extends Verbintenisgebied {
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "crohoOpleiding")
 	// @OrderBy(value = "brin")

@@ -16,15 +16,10 @@
 package nl.topicus.eduarte.model.entities.taxonomie.mbo.cgo;
 
 import jakarta.persistence.Entity;
-
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-
 import nl.topicus.eduarte.model.entities.taxonomie.mbo.AbstractMBOVerbintenisgebied;
 
 /**
  */
 @Entity()
-@Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "Landelijk")
 public class Diplomagebied extends AbstractMBOVerbintenisgebied {
 }

@@ -19,12 +19,8 @@ import jakarta.persistence.Column;
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-
 @DiscriminatorValue(value = "LandelijkeExtOrganisaties")
 @Entity()
-@Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "Instelling")
 public class GebruikLandelijkeExterneOrganisatiesSetting extends OrganisatieSetting<Boolean> {
 	@Column(name = "booleanValue", nullable = true)
 	private Boolean value;

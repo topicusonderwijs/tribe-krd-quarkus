@@ -15,14 +15,12 @@
  */
 package nl.topicus.eduarte.model.entities.opleiding;
 
+import org.hibernate.annotations.BatchSize;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-
-import org.hibernate.annotations.BatchSize;
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 /**
  * Een opleidingsvariant is een variant van een andere opleiding. Dit is
@@ -49,7 +47,6 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
  *
  */
 @Entity()
-@Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "Instelling")
 @BatchSize(size = 20)
 public class Opleidingsvariant extends Opleiding {
 

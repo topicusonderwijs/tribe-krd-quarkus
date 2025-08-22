@@ -25,15 +25,11 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-
 /**
  * Kwalificatiedossiers voor het CGO.
  *
  */
 @Entity()
-@Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "Landelijk")
 public class Kwalificatiedossier extends CompetentieMatrix {
 	@Column(nullable = true)
 	private Integer nummer;

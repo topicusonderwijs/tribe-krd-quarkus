@@ -15,9 +15,6 @@
  */
 package nl.topicus.eduarte.model.entities.dbs.trajecten.templates;
 
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-
 import jakarta.persistence.Basic;
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
@@ -28,7 +25,6 @@ import jakarta.persistence.ManyToOne;
 import nl.topicus.eduarte.model.entities.kenmerk.Kenmerk;
 
 @Entity()
-@Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "Instelling")
 @DiscriminatorValue("TTKoppelingKenmerk")
 public class TrajectTemplateKoppelingKenmerk extends TrajectTemplateKoppeling {
 	@ManyToOne(fetch = FetchType.LAZY)

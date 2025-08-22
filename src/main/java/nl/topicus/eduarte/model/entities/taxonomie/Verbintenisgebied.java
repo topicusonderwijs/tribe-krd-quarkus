@@ -22,8 +22,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.Where;
 
 import nl.topicus.eduarte.model.entities.criteriumbank.Criterium;
@@ -36,7 +34,6 @@ import nl.topicus.eduarte.model.entities.taxonomie.mbo.AbstractMBOVerbintenisgeb
 /**
  */
 @Entity()
-@Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "Landelijk")
 public class Verbintenisgebied extends TaxonomieElement {
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "parent")
 	private List<VerbintenisgebiedOnderdeel> onderdelen;

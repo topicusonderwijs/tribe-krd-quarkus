@@ -18,13 +18,9 @@ package nl.topicus.eduarte.model.entities.dbs.testen;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-
 /**
  */
 @Entity()
-@Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "Instelling")
 public class NumeriekeVeldwaarde extends Veldwaarde
 {
 	@Column(nullable = true, name = "intWaarde")

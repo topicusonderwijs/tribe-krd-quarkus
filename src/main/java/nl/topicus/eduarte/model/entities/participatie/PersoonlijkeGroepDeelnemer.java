@@ -19,10 +19,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-
 import nl.topicus.eduarte.model.entities.contract.Contract;
 import nl.topicus.eduarte.model.entities.groep.Groep;
 import nl.topicus.eduarte.model.entities.groep.Groepsdeelname;
@@ -37,7 +33,6 @@ import nl.topicus.eduarte.model.entities.groep.Groepsdeelname;
  */
 
 @Entity()
-@Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "Instelling")
 public class PersoonlijkeGroepDeelnemer extends Groepsdeelname {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "bevatGroep", nullable = true)

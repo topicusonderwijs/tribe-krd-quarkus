@@ -18,16 +18,12 @@ package nl.topicus.eduarte.model.entities.settings;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-
 /**
  * Houdt per organisatie bij of er gebruik gemaakt wordt van een RadiusServer,
  * en wat de instellingen zijn
  *
  */
 @Entity()
-@Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "Instelling")
 public class RadiusServerSetting extends OrganisatieSetting<RadiusServerConfiguration> {
 	@Embedded
 	private RadiusServerConfiguration value;

@@ -18,16 +18,12 @@ package nl.topicus.eduarte.model.entities.settings;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-
 /**
  * Houd per organisatie bij wat de wachtwoordsterkte is. Dus of er een bepaalde
  * lengte verplicht is, leestekens, hoofd en kleineletters etc.
  *
  */
 @Entity()
-@Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "Instelling")
 public class PasswordSetting extends OrganisatieSetting<PasswordConfiguration> {
 	@Embedded
 	private PasswordConfiguration value;

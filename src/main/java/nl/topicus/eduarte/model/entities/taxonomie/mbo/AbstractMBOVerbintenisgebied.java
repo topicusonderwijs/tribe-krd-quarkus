@@ -24,10 +24,6 @@ import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
-
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-
 import nl.topicus.eduarte.model.entities.taxonomie.MBONiveau;
 import nl.topicus.eduarte.model.entities.taxonomie.MBOSoortOpleiding;
 import nl.topicus.eduarte.model.entities.taxonomie.TaxonomieElementMBOLeerweg;
@@ -38,7 +34,6 @@ import nl.topicus.eduarte.model.entities.taxonomie.Verbintenisgebied;
  *
  */
 @Entity()
-@Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "Landelijk")
 public abstract class AbstractMBOVerbintenisgebied extends Verbintenisgebied
 {
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "taxonomieElement")

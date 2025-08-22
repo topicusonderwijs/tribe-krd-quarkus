@@ -18,13 +18,9 @@ package nl.topicus.eduarte.model.entities.settings;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-
 /**
  */
 @Entity()
-@Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "Instelling")
 public class OrganisatieIpAdresSetting extends OrganisatieSetting<OrganisatieIpAdresConfiguration> {
 	@Embedded
 	private OrganisatieIpAdresConfiguration value;

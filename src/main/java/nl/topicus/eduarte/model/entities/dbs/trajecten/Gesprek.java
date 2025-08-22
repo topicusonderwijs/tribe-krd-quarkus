@@ -15,9 +15,6 @@
  */
 package nl.topicus.eduarte.model.entities.dbs.trajecten;
 
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-
 import jakarta.persistence.Basic;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -29,7 +26,6 @@ import jakarta.persistence.ManyToOne;
 /**
  */
 @Entity()
-@Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "Instelling")
 public class Gesprek extends GeplandeBegeleidingsHandeling {
 	public static final String GESPREK = "GESPREK";
 

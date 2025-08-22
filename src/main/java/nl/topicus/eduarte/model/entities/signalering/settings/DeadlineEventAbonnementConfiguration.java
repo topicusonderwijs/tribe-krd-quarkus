@@ -20,11 +20,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-
 @Entity()
-@Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "Instelling")
 @DiscriminatorValue("DeadlineEventAbonnementConf")
 public class DeadlineEventAbonnementConfiguration extends AbstractEventAbonnementConfiguration<Integer> {
 

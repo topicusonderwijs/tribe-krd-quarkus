@@ -17,15 +17,11 @@ package nl.topicus.eduarte.model.entities.taxonomie.mbo;
 
 import jakarta.persistence.Entity;
 
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-
 /**
  * Kwalificatie in de oude MBO-structuur
  *
  */
 @Entity()
-@Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "Landelijk")
 public class Kwalificatie extends AbstractMBOVerbintenisgebied {
 	/**
 	 * Geeft aan of deze kwalificatie van LNV is of niet. Bij LNV-kwalificaties

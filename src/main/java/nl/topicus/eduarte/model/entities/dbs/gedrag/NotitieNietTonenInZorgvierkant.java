@@ -20,15 +20,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-
 import nl.topicus.eduarte.model.entities.dbs.NietTonenInZorgvierkant;
 import nl.topicus.eduarte.model.entities.personen.Medewerker;
 
 @Entity()
-@Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "Instelling")
 public class NotitieNietTonenInZorgvierkant extends NietTonenInZorgvierkant {
 	@Basic(optional = false)
 	@ManyToOne(fetch = FetchType.LAZY)

@@ -20,10 +20,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-
 import nl.topicus.eduarte.model.entities.personen.Medewerker;
 
 /**
@@ -31,7 +27,6 @@ import nl.topicus.eduarte.model.entities.personen.Medewerker;
  *
  */
 @Entity()
-@Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "Instelling")
 public class MedewerkerAccount extends Account {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "medewerker", nullable = true)

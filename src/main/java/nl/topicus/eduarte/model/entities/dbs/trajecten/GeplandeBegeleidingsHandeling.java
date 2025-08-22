@@ -17,9 +17,6 @@ package nl.topicus.eduarte.model.entities.dbs.trajecten;
 
 import java.util.Date;
 
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -32,7 +29,6 @@ import nl.topicus.eduarte.model.entities.participatie.Afspraak;
 /**
  */
 @Entity()
-@Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "Instelling")
 public abstract class GeplandeBegeleidingsHandeling extends BegeleidingsHandeling {
 	@Column(nullable = true)
 	@Basic(optional = false)

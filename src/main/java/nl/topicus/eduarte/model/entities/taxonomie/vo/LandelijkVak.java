@@ -16,10 +16,6 @@
 package nl.topicus.eduarte.model.entities.taxonomie.vo;
 
 import jakarta.persistence.Entity;
-
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-
 import nl.topicus.eduarte.model.entities.taxonomie.Deelgebied;
 
 /**
@@ -27,6 +23,5 @@ import nl.topicus.eduarte.model.entities.taxonomie.Deelgebied;
  *
  */
 @Entity()
-@Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "Landelijk")
 public class LandelijkVak extends Deelgebied {
 }
